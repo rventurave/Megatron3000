@@ -1,0 +1,72 @@
+void control::insertarRegistro()
+{
+    char nombreTabla[50];
+    cout << "Ingrese el nombre de la tabla: ";
+    cin >> nombreTabla;
+
+    string archivoCsv;
+    cout << "Ingrese el nombre del archivo CSV: ";
+    cin >> archivoCsv;
+    archivoCsv = "../../archivos/csv/" + archivoCsv + ".csv";
+
+    if (_esquema.existeTabla(nombreTabla) == false)
+    {
+        _esquema.generarEsquema(archivoCsv, nombreTabla);
+    }
+    char *esquemaTabla = _esquema.lineaEsquema(nombreTabla);
+
+    ifstream archivo(archivoCsv);
+    string linea;
+    getline(archivo, linea);
+
+    string bloque = _headFile.asignarBloque(nombreTabla);
+    string sector = _headFile.asignarSector(bloque);
+    int sizeSector = _disk.getSizeSector();
+    int bytes = _esquema.countBytes(nombreTabla);
+
+    cout<<"Tamaño de archivo es: "<<bytes*(_archivo.contarLineas(archivoCsv)-1)<<endl;
+    while (getline(archivo, linea))
+    {
+        string lineaConvertida = _archivo.separar(linea);
+        bool esValida = _esquema.validar(esquemaTabla, lineaConvertida);
+        if (esValida)
+        {
+            if (sizeSector >= bytes)
+            {
+                fstream salida(sector, ios::app);
+                salida << lineaConvertida << "\n";
+                salida.close();
+                sizeSector -= bytes;
+                _disk.setCapacidad(bytes);
+            }
+            else
+            {
+                sector = _headFile.asignarSector(bloque);
+                if (sector == "no")
+                {
+                    bloque = _headFile.asignarBloque(nombreTabla);
+                    sector = _headFile.asignarSector(bloque);
+
+                    fstream salida(sector, ios::app);
+                    salida << lineaConvertida << "\n";
+                    salida.close();
+                    sizeSector = _disk.getSizeSector() - bytes;
+                    _disk.setCapacidad(bytes);
+                }
+                else
+                {
+                    sizeSector = _disk.getSizeSector();
+                    fstream salida(sector, ios::app);
+                    salida << lineaConvertida << "\n";
+                    salida.close();
+                    sizeSector -= bytes;
+                    _disk.setCapacidad(bytes);
+                }
+            }
+        }
+        else
+        {
+            cout << "Registro invalido: " << lineaConvertida << endl;
+        }
+    }
+}

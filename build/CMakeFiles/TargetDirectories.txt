@@ -1,0 +1,5 @@
+/home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build/CMakeFiles/edit_cache.dir
+/home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build/CMakeFiles/rebuild_cache.dir
+/home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build/src/CMakeFiles/megatron3000.dir
+/home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build/src/CMakeFiles/edit_cache.dir
+/home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build/src/CMakeFiles/rebuild_cache.dir
