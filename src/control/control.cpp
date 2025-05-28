@@ -13,6 +13,12 @@ void control::insertArchivoCSV()
     cout << "Ingrese el nombre del archivo CSV: ";
     cin >> archivoCsv;
     archivoCsv = "../../archivos/csv/" + archivoCsv + ".csv";
+    int opcion;
+    cout << "Cantidad de registros a insertar"<<endl;
+    cout << "0) Insertar todos los registros" << endl;
+    cout << "n) Insertar n registro " << endl;
+    cin >> opcion;
+    int contador = 0;
 
     if (_esquema.existeTabla(nombreTabla) == false)
     {
@@ -28,8 +34,8 @@ void control::insertArchivoCSV()
     string sector = _headFile.asignarSector(bloque);
     int bytes = _esquema.countBytes(nombreTabla);
 
-    cout<<"Tamaño de archivo es: "<<bytes*(_archivo.contarLineas(archivoCsv)-1)<<endl;
-    
+    cout << "Tamaño de archivo es: " << bytes * (_archivo.contarLineas(archivoCsv) - 1) << endl;
+
     while (getline(archivo, linea))
     {
         string lineaConvertida = _archivo.separar(linea);
@@ -58,7 +64,11 @@ void control::insertArchivoCSV()
                     _disk.setCapacidad(bytes);
                 }
             }
-
+            contador++;
+            if (opcion != 0 && contador == opcion)
+            {
+                break;
+            }
         }
         else
         {
@@ -67,7 +77,6 @@ void control::insertArchivoCSV()
     }
 }
 
-// select * from nombreTabla
 void control::mostrarTabla(string nombreTabla)
 
 {
@@ -77,9 +86,10 @@ void control::mostrarTabla(string nombreTabla)
 
     char *esquemaTabla = _esquema.lineaEsquema(const_cast<char *>(nombreTabla.c_str()));
     string cabecera = _esquema.extraerIdentificadores(esquemaTabla);
-    string tabulado = _esquema.tabulacion(cabecera);
-    cout << tabulado << endl;
-    cout << "----------------------------------------------------------------------------------------------" << endl;
+
+    string tabulado = cabecera;
+    cout << cabecera << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 
     int contador = 0;
     string linea;
@@ -106,9 +116,17 @@ void control::mostrarTabla(string nombreTabla)
                 string lineaSalida;
                 while (getline(salida, lineaSalida))
                 {
-                    tabulado = _esquema.tabulacion(lineaSalida);
+                    char linea[4096];
+                    int i = 0;
+                    while (i < lineaSalida.size() && i < 4095)
+                    {
+                        linea[i] = lineaSalida[i];
+                        i++;
+                    }
+                    linea[i] = '\0';
+                    tabulado = _esquema.formatearLinea(linea, esquemaTabla);
                     cout << tabulado << endl;
-                    cout << "----------------------------------------------------------------------------------------------" << endl;
+                    cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
                     contador++;
                 }
                 salida.close();
@@ -116,50 +134,8 @@ void control::mostrarTabla(string nombreTabla)
             archivo.close();
         }
     }
-    cout << "----------------------------------------------------------------------------------------------" << endl;
-    cout <<"Tamaño de archivo: " << contador*_esquema.countBytes(const_cast<char *>(nombreTabla.c_str())) << endl;
-    BloqueA.close();
-}
-// select * from nombreTabla where nombreColumna = valorBuscado
-void control::mostrarWhere(string nombreTabla, string nombreColumna, string op, string valorBuscado)
-{
-    string bloqueAsignado = _headFile.getPahtBloquesAsignado();
-
-    ifstream BloqueA(bloqueAsignado);
-
-    char *esquemaTabla = _esquema.lineaEsquema(const_cast<char *>(nombreTabla.c_str()));
-    string cabecera = _esquema.extraerIdentificadores(esquemaTabla);
-    string tabulado = _esquema.tabulacion(cabecera);
-    cout << tabulado << endl;
-    cout << "----------------------------------------------------------------------------------------------" << endl;
-
-    int contador = 0;
-    string linea;
-    while (std::getline(BloqueA, linea))
-    {
-        size_t pos = linea.find('#');
-
-        if (pos == string::npos)
-            continue;
-
-        string nombre = linea.substr(0, pos);
-        string ruta = linea.substr(pos + 1);
-
-        if (nombre == nombreTabla)
-        {
-            ifstream archivo(ruta);
-
-            string contenido;
-            while (getline(archivo, contenido))
-            {
-                _query.consultaWhere(const_cast<char *>(nombreTabla.c_str()), const_cast<char *>(nombreColumna.c_str()), const_cast<char *>(op.c_str()), const_cast<char *>(valorBuscado.c_str()), const_cast<char *>(contenido.c_str()));
-                contador++;
-            }
-            archivo.close();
-        }
-    }
-    cout << "----------------------------------------------------------------------------------------------" << endl;
-    cout <<"Tamaño de archivo: " << contador*_esquema.countBytes(const_cast<char *>(nombreTabla.c_str())) << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+    cout << "Tamaño de archivo: " << contador * _esquema.countBytes(const_cast<char *>(nombreTabla.c_str())) << endl;
     BloqueA.close();
 }
 void control::menu()
@@ -172,7 +148,6 @@ void control::menu()
     cout << "    4. Crear tabla" << endl;
     cout << "    5. Insertar registro" << endl;
     cout << "    6. Mostrar tabla" << endl;
-    cout << "    7. Consulta Where" << endl;
     cout << "    0. Salir" << endl;
     cout << "Seleccione una opción: ";
     cin >> opcion;
@@ -230,26 +205,6 @@ void control::menu()
             cin >> nombreTabla;
             mostrarTabla(nombreTabla);
         }
-        else if(opcion == 7)
-        {
-            char nombreTabla[50];
-            cout << "Ingrese el nombre de la tabla: ";
-            cin >> nombreTabla;
-
-            char nombreColumna[50];
-            cout << "Ingrese el nombre de la columna: ";
-            cin >> nombreColumna;
-
-            char op[10];
-            cout << "Ingrese el operador: ";
-            cin >> op;
-
-            char valorBuscado[50];
-            cout << "Ingrese el valor buscado: ";
-            cin >> valorBuscado;
-            
-            mostrarWhere(nombreTabla, nombreColumna, op, valorBuscado);
-        }
         else
         {
             cout << "Opción no válida." << endl;
@@ -262,7 +217,6 @@ void control::menu()
         cout << "    4. Crear tabla" << endl;
         cout << "    5. Insertar registro" << endl;
         cout << "    6. Mostrar tabla" << endl;
-        cout << "    7. Consulta Where" << endl;
         cout << "    0. Salir" << endl;
         cout << "Seleccione una opción: ";
         cin >> opcion;

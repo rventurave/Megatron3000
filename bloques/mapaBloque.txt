@@ -1,0 +1,8 @@
+1#../../bloques/1bloque1.txt
+0#../../bloques/1bloque2.txt
+0#../../bloques/1bloque3.txt
+0#../../bloques/1bloque4.txt
+0#../../bloques/1bloque5.txt
+0#../../bloques/1bloque6.txt
+0#../../bloques/1bloque7.txt
+0#../../bloques/1bloque8.txt

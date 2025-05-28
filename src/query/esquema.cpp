@@ -418,14 +418,79 @@ string esquema::extraerIdentificadores(string esquema) {
 
     return identificadores;
 }
-string esquema::tabulacion(string entrada) {
-    std::string resultado;
-    for (char c : entrada) {
-        if (c == '#') {
-            resultado += "\t";
+
+char* esquema::formatearLinea(char* linea, char* esquema) {
+    static char resultado[1024];
+    resultado[0] = '\0';
+
+    // Extraer tipos y tamaños del esquema
+    char tipos[50][10];
+    int tamaños[50];
+    int numCampos = 0;
+    int i = 0;
+
+    // Saltar el nombre de la tabla
+    while (esquema[i] && esquema[i] != '#') i++;
+    if (esquema[i] == '#') i++;
+
+    while (esquema[i]) {
+        // Saltar el nombre del campo
+        while (esquema[i] && esquema[i] != '#') i++;
+        if (esquema[i] == '#') i++;
+
+        // Leer tipo
+        int j = 0;
+        while (esquema[i] && esquema[i] != '#') {
+            tipos[numCampos][j++] = esquema[i++];
+        }
+        tipos[numCampos][j] = '\0';
+        if (esquema[i] == '#') i++;
+
+        // Leer tamaño
+        int valor = 0;
+        while (esquema[i] && esquema[i] != '#') {
+            if (esquema[i] >= '0' && esquema[i] <= '9') {
+                valor = valor * 10 + (esquema[i] - '0');
+            }
+            i++;
+        }
+        tamaños[numCampos++] = valor;
+        if (esquema[i] == '#') i++;
+    }
+
+    // Separar los campos de la línea
+    char campos[50][1024];
+    int campoAct = 0, pos = 0;
+    for (int k = 0; linea[k]; k++) {
+        if (linea[k] == '#') {
+            campos[campoAct][pos] = '\0';
+            limpiarCampo(campos[campoAct]);
+            campoAct++;
+            pos = 0;
         } else {
-            resultado += c;
+            campos[campoAct][pos++] = linea[k];
         }
     }
+    campos[campoAct][pos] = '\0';
+    limpiarCampo(campos[campoAct]);
+    campoAct++;
+
+    // Formatear línea
+    int r = 0;
+    for (int k = 0; k < numCampos; k++) {
+        if (k > 0) resultado[r++] = '|';
+
+        int len = 0;
+        while (campos[k][len]) len++;
+
+        for (int j = 0; j < len && j < tamaños[k]; j++) {
+            resultado[r++] = campos[k][j];
+        }
+
+        for (int j = len; j < tamaños[k]; j++) {
+            resultado[r++] = ' ';
+        }
+    }
+    resultado[r] = '\0';
     return resultado;
 }

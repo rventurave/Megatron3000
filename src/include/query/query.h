@@ -16,9 +16,6 @@ class query
     void escribirCampoNumerico(ostream& out, int valor);
     bool insert(const char* registro, int tamFijo, const char* ruta);
     bool eliminar(int posicionRegistro, int tamFijo, const char* ruta);
-
-    bool comparar(char* a, char* b);
-    void consultaWhere(char* nombreTabla, char* nombreColumna, char* op, char* valorBuscado, char* linea);
 };
 
 #endif

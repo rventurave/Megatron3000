@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000
+CMAKE_SOURCE_DIR = /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build
+CMAKE_BINARY_DIR = /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build/CMakeFiles /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build/src//CMakeFiles/progress.marks
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build/CMakeFiles 0
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build/CMakeFiles /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src//CMakeFiles/progress.marks
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,39 +103,39 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/megatron3000.dir/rule:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/megatron3000.dir/rule
-.PHONY : src/CMakeFiles/megatron3000.dir/rule
+src/CMakeFiles/Megatron3000.dir/rule:
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/Megatron3000.dir/rule
+.PHONY : src/CMakeFiles/Megatron3000.dir/rule
 
 # Convenience name for target.
-megatron3000: src/CMakeFiles/megatron3000.dir/rule
-.PHONY : megatron3000
+Megatron3000: src/CMakeFiles/Megatron3000.dir/rule
+.PHONY : Megatron3000
 
 # fast build rule for target.
-megatron3000/fast:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/build
-.PHONY : megatron3000/fast
+Megatron3000/fast:
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/build
+.PHONY : Megatron3000/fast
 
 control/control.o: control/control.cpp.o
 .PHONY : control/control.o
 
 # target to build an object file
 control/control.cpp.o:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/control/control.cpp.o
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/control/control.cpp.o
 .PHONY : control/control.cpp.o
 
 control/control.i: control/control.cpp.i
@@ -143,7 +143,7 @@ control/control.i: control/control.cpp.i
 
 # target to preprocess a source file
 control/control.cpp.i:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/control/control.cpp.i
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/control/control.cpp.i
 .PHONY : control/control.cpp.i
 
 control/control.s: control/control.cpp.s
@@ -151,7 +151,7 @@ control/control.s: control/control.cpp.s
 
 # target to generate assembly for a file
 control/control.cpp.s:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/control/control.cpp.s
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/control/control.cpp.s
 .PHONY : control/control.cpp.s
 
 main.o: main.cpp.o
@@ -159,7 +159,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/main.cpp.o
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -167,7 +167,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/main.cpp.i
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -175,7 +175,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/main.cpp.s
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 query/archivo.o: query/archivo.cpp.o
@@ -183,7 +183,7 @@ query/archivo.o: query/archivo.cpp.o
 
 # target to build an object file
 query/archivo.cpp.o:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/query/archivo.cpp.o
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/query/archivo.cpp.o
 .PHONY : query/archivo.cpp.o
 
 query/archivo.i: query/archivo.cpp.i
@@ -191,7 +191,7 @@ query/archivo.i: query/archivo.cpp.i
 
 # target to preprocess a source file
 query/archivo.cpp.i:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/query/archivo.cpp.i
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/query/archivo.cpp.i
 .PHONY : query/archivo.cpp.i
 
 query/archivo.s: query/archivo.cpp.s
@@ -199,7 +199,7 @@ query/archivo.s: query/archivo.cpp.s
 
 # target to generate assembly for a file
 query/archivo.cpp.s:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/query/archivo.cpp.s
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/query/archivo.cpp.s
 .PHONY : query/archivo.cpp.s
 
 query/esquema.o: query/esquema.cpp.o
@@ -207,7 +207,7 @@ query/esquema.o: query/esquema.cpp.o
 
 # target to build an object file
 query/esquema.cpp.o:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/query/esquema.cpp.o
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/query/esquema.cpp.o
 .PHONY : query/esquema.cpp.o
 
 query/esquema.i: query/esquema.cpp.i
@@ -215,7 +215,7 @@ query/esquema.i: query/esquema.cpp.i
 
 # target to preprocess a source file
 query/esquema.cpp.i:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/query/esquema.cpp.i
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/query/esquema.cpp.i
 .PHONY : query/esquema.cpp.i
 
 query/esquema.s: query/esquema.cpp.s
@@ -223,7 +223,7 @@ query/esquema.s: query/esquema.cpp.s
 
 # target to generate assembly for a file
 query/esquema.cpp.s:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/query/esquema.cpp.s
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/query/esquema.cpp.s
 .PHONY : query/esquema.cpp.s
 
 query/query.o: query/query.cpp.o
@@ -231,7 +231,7 @@ query/query.o: query/query.cpp.o
 
 # target to build an object file
 query/query.cpp.o:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/query/query.cpp.o
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/query/query.cpp.o
 .PHONY : query/query.cpp.o
 
 query/query.i: query/query.cpp.i
@@ -239,7 +239,7 @@ query/query.i: query/query.cpp.i
 
 # target to preprocess a source file
 query/query.cpp.i:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/query/query.cpp.i
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/query/query.cpp.i
 .PHONY : query/query.cpp.i
 
 query/query.s: query/query.cpp.s
@@ -247,7 +247,7 @@ query/query.s: query/query.cpp.s
 
 # target to generate assembly for a file
 query/query.cpp.s:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/query/query.cpp.s
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/query/query.cpp.s
 .PHONY : query/query.cpp.s
 
 storage/disk.o: storage/disk.cpp.o
@@ -255,7 +255,7 @@ storage/disk.o: storage/disk.cpp.o
 
 # target to build an object file
 storage/disk.cpp.o:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/storage/disk.cpp.o
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/storage/disk.cpp.o
 .PHONY : storage/disk.cpp.o
 
 storage/disk.i: storage/disk.cpp.i
@@ -263,7 +263,7 @@ storage/disk.i: storage/disk.cpp.i
 
 # target to preprocess a source file
 storage/disk.cpp.i:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/storage/disk.cpp.i
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/storage/disk.cpp.i
 .PHONY : storage/disk.cpp.i
 
 storage/disk.s: storage/disk.cpp.s
@@ -271,7 +271,7 @@ storage/disk.s: storage/disk.cpp.s
 
 # target to generate assembly for a file
 storage/disk.cpp.s:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/storage/disk.cpp.s
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/storage/disk.cpp.s
 .PHONY : storage/disk.cpp.s
 
 storage/headFile.o: storage/headFile.cpp.o
@@ -279,7 +279,7 @@ storage/headFile.o: storage/headFile.cpp.o
 
 # target to build an object file
 storage/headFile.cpp.o:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/storage/headFile.cpp.o
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/storage/headFile.cpp.o
 .PHONY : storage/headFile.cpp.o
 
 storage/headFile.i: storage/headFile.cpp.i
@@ -287,7 +287,7 @@ storage/headFile.i: storage/headFile.cpp.i
 
 # target to preprocess a source file
 storage/headFile.cpp.i:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/storage/headFile.cpp.i
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/storage/headFile.cpp.i
 .PHONY : storage/headFile.cpp.i
 
 storage/headFile.s: storage/headFile.cpp.s
@@ -295,7 +295,7 @@ storage/headFile.s: storage/headFile.cpp.s
 
 # target to generate assembly for a file
 storage/headFile.cpp.s:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/storage/headFile.cpp.s
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/storage/headFile.cpp.s
 .PHONY : storage/headFile.cpp.s
 
 # Help Target
@@ -306,7 +306,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... megatron3000"
+	@echo "... Megatron3000"
 	@echo "... control/control.o"
 	@echo "... control/control.i"
 	@echo "... control/control.s"
@@ -339,6 +339,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

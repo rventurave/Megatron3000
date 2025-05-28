@@ -10,6 +10,6 @@ set(SOURCES
 
 set(HEADERS include)
 
-add_executable(megatron3000 ${SOURCES} ${HEADERS})
+add_executable(Megatron3000 ${SOURCES} ${HEADERS})
 
-target_include_directories(megatron3000 PUBLIC include)
+target_include_directories(Megatron3000 PUBLIC include)

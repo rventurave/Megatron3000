@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000
+CMAKE_SOURCE_DIR = /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build
+CMAKE_BINARY_DIR = /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build/CMakeFiles /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build/CMakeFiles /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/megatron3000/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/clay/Escritorio/CUMPUTER-SCIENCE/BDII/Megatron3000/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named megatron3000
+# Target rules for targets named Megatron3000
 
 # Build rule for target.
-megatron3000: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 megatron3000
-.PHONY : megatron3000
+Megatron3000: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Megatron3000
+.PHONY : Megatron3000
 
 # fast build rule for target.
-megatron3000/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/megatron3000.dir/build.make src/CMakeFiles/megatron3000.dir/build
-.PHONY : megatron3000/fast
+Megatron3000/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/Megatron3000.dir/build.make src/CMakeFiles/Megatron3000.dir/build
+.PHONY : Megatron3000/fast
 
 # Help Target
 help:
@@ -137,7 +137,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... megatron3000"
+	@echo "... Megatron3000"
 .PHONY : help
 
 

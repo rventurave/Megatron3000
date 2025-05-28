@@ -15,7 +15,7 @@ public:
     void limpiarCampo(char *campo);
     bool validar(char *esquema,  string linea);
     string extraerIdentificadores(string esquema);
-    string tabulacion(string entrada);
+    char * formatearLinea(char * linea, char * esquema);
 };
 
 #endif
