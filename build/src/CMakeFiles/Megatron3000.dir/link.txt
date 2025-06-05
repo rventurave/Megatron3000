@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\Megatron3000.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\Megatron3000.dir/objects.a @CMakeFiles\Megatron3000.dir\objects1.rsp
+C:\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\Megatron3000.dir/objects.a -Wl,--no-whole-archive -o Megatron3000.exe -Wl,--out-implib,libMegatron3000.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Megatron3000.dir\linkLibs.rsp

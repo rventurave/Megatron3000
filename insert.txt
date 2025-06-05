@@ -1,0 +1,226 @@
+
+void control::insertCSV()
+{
+    char nombreTabla[50];
+    cout << "Ingrese el nombre de la tabla: ";
+    cin >> nombreTabla;
+
+    string archivoCsv;
+    cout << "Ingrese el nombre del archivo CSV: ";
+    cin >> archivoCsv;
+    archivoCsv = "../../archivos/" + archivoCsv + ".csv";
+
+    int opcion;
+    cout << "Cantidad de registros a insertar" << endl;
+    cout << "0) Insertar todos los registros" << endl;
+    cout << "n) Insertar n registros" << endl;
+    cin >> opcion;
+
+    if (!_esquema.existeTabla(nombreTabla))
+    {
+        _esquema.generarEsquema(archivoCsv, nombreTabla);
+    }
+
+    char* esquemaTabla = _esquema.extraerEsquema(nombreTabla);
+
+    ifstream archivo(archivoCsv);
+    string linea;
+    getline(archivo, linea); // saltar encabezado CSV
+
+    string bloque;
+    string sector;
+    int bytes = _esquema.countBytes(nombreTabla);
+    int maxRegistrosPorBloque = _disk.getSizeBloque() / bytes;
+
+    int contadorTotal = 0;
+    int contadorBloque = 0;
+
+    bool insertado = false;
+    bool espacio = true;
+
+    while (getline(archivo, linea))
+    {
+        string separado = _archivo.separar(linea);
+        bool esValida = _esquema.validar(esquemaTabla, separado);
+        char* lineaConvertida = _esquema.formatearLinea(separado.c_str(), esquemaTabla);
+
+        if (esValida)
+        {
+            _bloque.insertarLinea(lineaConvertida);
+            contadorBloque++;
+            contadorTotal++;
+
+            if (contadorBloque == maxRegistrosPorBloque || (opcion != 0 && contadorTotal == opcion))
+            {
+                const char* contenido = _bloque.obtenerBloque();
+                stringstream ss(contenido);
+                string registro;
+
+                while (getline(ss, registro, '|'))
+                {
+                    if (registro.empty()) continue;
+
+                    insertado = false;
+                    espacio = false;
+
+                    // Buscar sectores existentes para insertar
+                    string bloqueAsignado = _headFile.getPahtBloquesAsignado();
+                    ifstream BloqueA(bloqueAsignado);
+                    string lineaBloque;
+
+                    while (getline(BloqueA, lineaBloque))
+                    {
+                        size_t pos = lineaBloque.find('#');
+                        if (pos == string::npos) continue;
+
+                        string nombre = lineaBloque.substr(0, pos);
+                        string rutaBloque = lineaBloque.substr(pos + 1);
+
+                        if (nombre == nombreTabla)
+                        {
+                            ifstream archivoSectores(rutaBloque);
+                            string lineaSector;
+                            while (getline(archivoSectores, lineaSector))
+                            {
+                                size_t posSector = lineaSector.find('#');
+                                if (posSector == string::npos) continue;
+
+                                string rutaSector = lineaSector.substr(posSector + 1);
+
+                                insertado = _query.insert((char*)registro.c_str(), bytes, rutaSector.c_str());
+                                espacio = insertado;
+
+                                if (insertado)
+                                {
+                                    cout << "Insertado en sector existente: " << rutaSector << endl;
+                                    _disk.setCapacidad(bytes);
+                                    break;
+                                }
+                            }
+                            archivoSectores.close();
+                        }
+
+                        if (insertado) break;
+                    }
+                    BloqueA.close();
+
+                    // Si no hubo espacio, se crea nuevo bloque/sector
+                    if (!insertado)
+                    {
+                        bloque = _headFile.asignarBloque(nombreTabla);
+                        sector = _headFile.asignarSector(bloque);
+
+                        insertado = _query.insert((char*)registro.c_str(), bytes, sector.c_str());
+                        _disk.setCapacidad(bytes);
+
+                        if (!insertado)
+                        {
+                            // Si el sector ya estaba lleno
+                            sector = _headFile.asignarSector(bloque);
+                            if (sector == "no")
+                            {
+                                bloque = _headFile.asignarBloque(nombreTabla);
+                                sector = _headFile.asignarSector(bloque);
+                            }
+                            _query.insert((char*)registro.c_str(), bytes, sector.c_str());
+                        }
+                    }
+
+                    cout << "Registro insertado: " << registro << endl;
+                }
+
+                _bloque.vaciarBloque();
+                contadorBloque = 0;
+
+                if (opcion != 0 && contadorTotal == opcion)
+                    break;
+            }
+        }
+        else
+        {
+            cout << "Registro inválido: " << lineaConvertida << endl;
+        }
+    }
+
+    // Procesar registros restantes en el bloque
+    if (contadorBloque > 0)
+    {
+        const char* contenido = _bloque.obtenerBloque();
+        stringstream ss(contenido);
+        string registro;
+
+        while (getline(ss, registro, '|'))
+        {
+            if (registro.empty()) continue;
+
+            insertado = false;
+            espacio = false;
+
+            string bloqueAsignado = _headFile.getPahtBloquesAsignado();
+            ifstream BloqueA(bloqueAsignado);
+            string lineaBloque;
+
+            while (getline(BloqueA, lineaBloque))
+            {
+                size_t pos = lineaBloque.find('#');
+                if (pos == string::npos) continue;
+
+                string nombre = lineaBloque.substr(0, pos);
+                string rutaBloque = lineaBloque.substr(pos + 1);
+
+                if (nombre == nombreTabla)
+                {
+                    ifstream archivoSectores(rutaBloque);
+                    string lineaSector;
+                    while (getline(archivoSectores, lineaSector))
+                    {
+                        size_t posSector = lineaSector.find('#');
+                        if (posSector == string::npos) continue;
+
+                        string rutaSector = lineaSector.substr(posSector + 1);
+
+                        insertado = _query.insert((char*)registro.c_str(), bytes, rutaSector.c_str());
+                        espacio = insertado;
+
+                        if (insertado)
+                        {
+                            cout << "Insertado en sector existente (restante): " << rutaSector << endl;
+                            _disk.setCapacidad(bytes);
+                            break;
+                        }
+                    }
+                    archivoSectores.close();
+                }
+
+                if (insertado) break;
+            }
+            BloqueA.close();
+
+            if (!insertado)
+            {
+                bloque = _headFile.asignarBloque(nombreTabla);
+                sector = _headFile.asignarSector(bloque);
+
+                insertado = _query.insert((char*)registro.c_str(), bytes, sector.c_str());
+                _disk.setCapacidad(bytes);
+
+                if (!insertado)
+                {
+                    sector = _headFile.asignarSector(bloque);
+                    if (sector == "no")
+                    {
+                        bloque = _headFile.asignarBloque(nombreTabla);
+                        sector = _headFile.asignarSector(bloque);
+                    }
+                    _query.insert((char*)registro.c_str(), bytes, sector.c_str());
+                }
+            }
+
+            cout << "Registro insertado (restante): " << registro << endl;
+        }
+
+        _bloque.vaciarBloque();
+    }
+
+    archivo.close();
+}

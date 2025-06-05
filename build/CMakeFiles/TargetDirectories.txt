@@ -1,0 +1,5 @@
+C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/CMakeFiles/edit_cache.dir
+C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/CMakeFiles/rebuild_cache.dir
+C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src/CMakeFiles/Megatron3000.dir
+C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src/CMakeFiles/edit_cache.dir
+C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src/CMakeFiles/rebuild_cache.dir

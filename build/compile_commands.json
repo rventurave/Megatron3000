@@ -1,0 +1,50 @@
+[
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\main.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\main.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/main.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\storage\\disk.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\storage\\disk.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/storage/disk.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/storage/disk.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\storage\\headFile.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\storage\\headFile.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/storage/headFile.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/storage/headFile.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\storage\\bloque.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\storage\\bloque.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/storage/bloque.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/storage/bloque.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\query\\query.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\query\\query.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/query/query.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/query/query.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\query\\esquema.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\query\\esquema.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/query/esquema.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/query/esquema.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\query\\archivo.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\query\\archivo.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/query/archivo.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/query/archivo.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\control\\control.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\control\\control.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/control/control.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj"
+}
+]
