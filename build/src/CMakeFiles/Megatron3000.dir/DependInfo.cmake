@@ -8,6 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/bufferManager.cpp" "src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj" "gcc" "src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj.d"
+  "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/bufferPool.cpp" "src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj" "gcc" "src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj.d"
+  "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/clock.cpp" "src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj" "gcc" "src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj.d"
+  "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/frame.cpp" "src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj" "gcc" "src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj.d"
+  "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/lru.cpp" "src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj" "gcc" "src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj.d"
   "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/control/control.cpp" "src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj" "gcc" "src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj.d"
   "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/main.cpp" "src/CMakeFiles/Megatron3000.dir/main.cpp.obj" "gcc" "src/CMakeFiles/Megatron3000.dir/main.cpp.obj.d"
   "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/query/archivo.cpp" "src/CMakeFiles/Megatron3000.dir/query/archivo.cpp.obj" "gcc" "src/CMakeFiles/Megatron3000.dir/query/archivo.cpp.obj.d"

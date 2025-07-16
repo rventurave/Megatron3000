@@ -3,6 +3,10 @@
 using namespace std;
 namespace fs = filesystem;
 
+// Objetivo: Crea un archivo de encabezado que mapea bloques a sectores
+// Input: int numPlato, int numSuperficie, int numPistasPorPlato, int numSectorPorPista, int sectorPorBloque
+// Output: Crea un archivo de bloques que contiene la asignación de sectores a bloques
+// Autor: Ronald Ventura
 void headFile::createHeadFile(int numPlato, int numSuperficie, int numPistasPorPlato, int numSectorPorPista, int sectorPorBloque)
 {
     string pathBloques = "../../metaData";
@@ -72,11 +76,14 @@ void headFile::createHeadFile(int numPlato, int numSuperficie, int numPistasPorP
     cout << "Mapeo completado. Total bloques creados: " << bloqueID - (sectoresEnBloque == 0 ? 1 : 0) << endl;
 }
 
+
 headFile::headFile()
 {
     bloque = "../../metaData/mapaBloque.txt";
     pahtBloquesAsignados = "../../metaData/blosquesAsignados.txt";
 }
+
+//metodos para obtener las rutas de los archivos de bloques y asignaciones
 string headFile::getPahtBloque()
 {
     return bloque;
@@ -86,6 +93,10 @@ string headFile::getPahtBloquesAsignado()
     return pahtBloquesAsignados;
 }
 
+// Objetivo: Extrae el grupo y número de un nombre de archivo con formato "bloqueX.txt"
+// Input: nombre - nombre del archivo
+// Output: Un par con el grupo (0) y el número extraído del nombre, o (-1, -1) si no coincide
+// Autor: Ronald Ventura
 pair<int, int> headFile::extraerGrupoYNumero(string &nombre)
 {
     regex re(R"(bloque(\d+)\.txt)");
@@ -97,6 +108,11 @@ pair<int, int> headFile::extraerGrupoYNumero(string &nombre)
     }
     return {-1, -1};
 }
+
+//objetivo: Mapea los bloques segun los sectores del disco
+// Input: Ninguno
+// Output: Actualiza el archivo de mapaBLoque.txt con los bloques ordenados
+// Autor: Ronald Ventura
 void headFile::mapearBloques()
 {
     string path = "../../metaData";
@@ -124,6 +140,10 @@ void headFile::mapearBloques()
     archivoBloquesAsignados.close();
 }
 
+// Objetivo: Asigna un bloque a al disco cuando quiere insertar un registros
+// Input: tabla - nombre de la tabla a la que se asignará el bloque
+// Output: Devuelve la ruta del bloque asignado o "no" si no hay bloques disponibles
+// Autor: Ronald Ventura
 string headFile::asignarBloque(string tabla)
 {
     fstream archivo(bloque, ios::in);
@@ -169,7 +189,10 @@ string headFile::asignarBloque(string tabla)
     return ruta;
 }
 
-
+// Objetivo: Asigna un sector de un bloque específico
+// Input: bloque1 - ruta del bloque donde esta el la ruta del sector
+// Output: Devuelve la ruta del sector asignado o "no" si no hay sectores disponibles
+// Autor: Ronald Ventura
 string headFile::asignarSector(string bloque1)
 {
     fstream archivo(bloque1, ios::in);

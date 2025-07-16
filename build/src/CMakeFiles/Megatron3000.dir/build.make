@@ -176,11 +176,86 @@ src/CMakeFiles/Megatron3000.dir/query/archivo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Megatron3000.dir/query/archivo.cpp.s"
 	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\query\archivo.cpp -o CMakeFiles\Megatron3000.dir\query\archivo.cpp.s
 
+src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj: src/CMakeFiles/Megatron3000.dir/flags.make
+src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj: src/CMakeFiles/Megatron3000.dir/includes_CXX.rsp
+src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj: C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/bufferManager.cpp
+src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj: src/CMakeFiles/Megatron3000.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj -MF CMakeFiles\Megatron3000.dir\buffer\bufferManager.cpp.obj.d -o CMakeFiles\Megatron3000.dir\buffer\bufferManager.cpp.obj -c C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\bufferManager.cpp
+
+src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.i"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\bufferManager.cpp > CMakeFiles\Megatron3000.dir\buffer\bufferManager.cpp.i
+
+src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.s"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\bufferManager.cpp -o CMakeFiles\Megatron3000.dir\buffer\bufferManager.cpp.s
+
+src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj: src/CMakeFiles/Megatron3000.dir/flags.make
+src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj: src/CMakeFiles/Megatron3000.dir/includes_CXX.rsp
+src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj: C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/bufferPool.cpp
+src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj: src/CMakeFiles/Megatron3000.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj -MF CMakeFiles\Megatron3000.dir\buffer\bufferPool.cpp.obj.d -o CMakeFiles\Megatron3000.dir\buffer\bufferPool.cpp.obj -c C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\bufferPool.cpp
+
+src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.i"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\bufferPool.cpp > CMakeFiles\Megatron3000.dir\buffer\bufferPool.cpp.i
+
+src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.s"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\bufferPool.cpp -o CMakeFiles\Megatron3000.dir\buffer\bufferPool.cpp.s
+
+src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj: src/CMakeFiles/Megatron3000.dir/flags.make
+src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj: src/CMakeFiles/Megatron3000.dir/includes_CXX.rsp
+src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj: C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/frame.cpp
+src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj: src/CMakeFiles/Megatron3000.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj -MF CMakeFiles\Megatron3000.dir\buffer\frame.cpp.obj.d -o CMakeFiles\Megatron3000.dir\buffer\frame.cpp.obj -c C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\frame.cpp
+
+src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Megatron3000.dir/buffer/frame.cpp.i"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\frame.cpp > CMakeFiles\Megatron3000.dir\buffer\frame.cpp.i
+
+src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Megatron3000.dir/buffer/frame.cpp.s"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\frame.cpp -o CMakeFiles\Megatron3000.dir\buffer\frame.cpp.s
+
+src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj: src/CMakeFiles/Megatron3000.dir/flags.make
+src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj: src/CMakeFiles/Megatron3000.dir/includes_CXX.rsp
+src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj: C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/lru.cpp
+src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj: src/CMakeFiles/Megatron3000.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj -MF CMakeFiles\Megatron3000.dir\buffer\lru.cpp.obj.d -o CMakeFiles\Megatron3000.dir\buffer\lru.cpp.obj -c C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\lru.cpp
+
+src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Megatron3000.dir/buffer/lru.cpp.i"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\lru.cpp > CMakeFiles\Megatron3000.dir\buffer\lru.cpp.i
+
+src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Megatron3000.dir/buffer/lru.cpp.s"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\lru.cpp -o CMakeFiles\Megatron3000.dir\buffer\lru.cpp.s
+
+src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj: src/CMakeFiles/Megatron3000.dir/flags.make
+src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj: src/CMakeFiles/Megatron3000.dir/includes_CXX.rsp
+src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj: C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/clock.cpp
+src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj: src/CMakeFiles/Megatron3000.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj -MF CMakeFiles\Megatron3000.dir\buffer\clock.cpp.obj.d -o CMakeFiles\Megatron3000.dir\buffer\clock.cpp.obj -c C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\clock.cpp
+
+src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Megatron3000.dir/buffer/clock.cpp.i"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\clock.cpp > CMakeFiles\Megatron3000.dir\buffer\clock.cpp.i
+
+src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Megatron3000.dir/buffer/clock.cpp.s"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\clock.cpp -o CMakeFiles\Megatron3000.dir\buffer\clock.cpp.s
+
 src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj: src/CMakeFiles/Megatron3000.dir/flags.make
 src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj: src/CMakeFiles/Megatron3000.dir/includes_CXX.rsp
 src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj: C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/control/control.cpp
 src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj: src/CMakeFiles/Megatron3000.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj"
 	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj -MF CMakeFiles\Megatron3000.dir\control\control.cpp.obj.d -o CMakeFiles\Megatron3000.dir\control\control.cpp.obj -c C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\control\control.cpp
 
 src/CMakeFiles/Megatron3000.dir/control/control.cpp.i: cmake_force
@@ -200,6 +275,11 @@ Megatron3000_OBJECTS = \
 "CMakeFiles/Megatron3000.dir/query/query.cpp.obj" \
 "CMakeFiles/Megatron3000.dir/query/esquema.cpp.obj" \
 "CMakeFiles/Megatron3000.dir/query/archivo.cpp.obj" \
+"CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj" \
+"CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj" \
+"CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj" \
+"CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj" \
+"CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj" \
 "CMakeFiles/Megatron3000.dir/control/control.cpp.obj"
 
 # External object files for target Megatron3000
@@ -212,12 +292,17 @@ src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/storage/bloque.cpp.obj
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/query/query.cpp.obj
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/query/esquema.cpp.obj
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/query/archivo.cpp.obj
+src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj
+src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj
+src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj
+src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj
+src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/build.make
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/linkLibs.rsp
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/objects1.rsp
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Megatron3000.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Megatron3000.exe"
 	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Megatron3000.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

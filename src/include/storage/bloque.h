@@ -3,7 +3,7 @@
 
 class bloque {
 private:
-    char bloqueB[50000];
+    char bloqueB[5000];
     void agregarAlBloque(const char* contenido);
     void procesarArchivoRegistro(const char* ruta);
 

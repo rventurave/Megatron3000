@@ -1,0 +1,142 @@
+@startuml
+
+class Frame {
+    +int frameID
+    +string pageID
+    +char operation
+    +int dirty
+    +int time
+    +int pin
+    +int count
+    +Frame(int id)
+}
+
+class BufferManager {
+    -vector<bloque> bloques
+    +static void accessFrame(Frame& frame, char operation, int pinFlag, int currentTime)
+    +static void resetFrame(Frame& frame)
+}
+
+class BufferPool {
+    #vector<Frame> frames
+    #int timeCounter
+    +BufferPool(int size)
+    +bool allPinned() const
+    +void printFrames() const
+}
+
+class LRU {
+    -int hits
+    -int misses
+    +LRU(int size)
+    +bool accessPage(string pageID, char operation, int pinFlag)
+    +void despinear(string pageID)
+    +int findFrameToReplace()
+    +void printStats() const
+    +void guardado(string pageID)
+    +int getIndexPageID(string pageID) const
+    +int getSize() const
+}
+
+class bloque {
+    -char bloqueB[50000]
+    -void agregarAlBloque(const char* contenido)
+    -void procesarArchivoRegistro(const char* ruta)
+    +bloque()
+    +void crearBloque(const char* archivoRutas)
+    +void mostrarBloque()
+    +const char* obtenerBloque()
+    +bool insertarLinea(const char* linea)
+    +void vaciarBloque()
+}
+
+class disk {
+    -int plato, pistasPorPlato, superficie, sectorPorPistas
+    -int sizeSector, sizeBloque, capacidad, sectores, pistas
+    -int sectoresPorBloque
+    -float bloquesPorPista, bloquesTotales
+    +disk()
+    +disk(int, int, int, int, int)
+    +getters
+    +createDisk()
+    +setCapacidad(int)
+    +informacionDisk()
+    +informacionCapacidad()
+}
+
+class esquema {
+    +void creaEsquema()
+    +bool existeTabla(char* nombreTabla)
+    +int countBytes(char* nombreTabla)
+    +char* extraerEsquema(char* nombreTabla)
+    +void generarEsquema(string, string)
+    +bool esEntero(char* s), esFloat(char* s)
+    +void limpiarCampo(char* campo)
+    +bool validar(char* esquema, string linea)
+    +string extraerIdentificadores(string esquema)
+    +char* formatearLinea(const char*, char*)
+}
+
+class archivo {
+    +int contarLineas(string archivoTXT)
+    +string separar(string rutaCSV)
+}
+
+class query {
+    +void creaTabla()
+    +int leerCampoNumerico(istream&)
+    +void escribirCampoNumerico(ostream&, int)
+    +bool insert(char*, int, const char*)
+    +bool eliminar(int, int, const char*)
+    +void limpiarCampo(char*)
+    +bool where(char*, char*, char*, char*, char*, char*)
+}
+
+class headFile {
+    -string bloque, pahtBloquesAsignados
+    +headFile()
+    +void createHeadFile(...)
+    +string asignarBloque(string)
+    +string asignarSector(string)
+    +pair<int, int> extraerGrupoYNumero(string&)
+    +void mapearBloques()
+    +string getPahtBloque(), getPahtBloquesAsignado()
+}
+
+class control {
+    -disk _disk
+    -esquema _esquema
+    -query _query
+    -headFile _headFile
+    -archivo _archivo
+    -bloque _bloque
+    -LRU _buffer
+    +control(int)
+    +void menu(), insertCSV(), mostrarTabla(string)
+    +void consultaWhere(char*)
+    +void eliminarRegistro()
+    +void insertaDisco(...), eliminarDisco(...)
+    +void insertaBloque(...), eliminarBloque(...)
+    +bool verificarBloque(string)
+    +void simularBuffer()
+}
+
+Frame--> BufferPool
+Frame --> LRU
+BufferManager --> BufferPool
+BufferManager --> LRU
+bloque --> BufferManager
+
+headFile --> disk
+bloque --> esquema
+query --> BufferManager
+
+control --|> bloque
+control --|> disk
+control --|> esquema
+control --|> headFile
+control --|> archivo
+control --|> query
+control --|> LRU
+
+@enduml

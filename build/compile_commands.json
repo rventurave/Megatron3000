@@ -43,6 +43,36 @@
 },
 {
   "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\buffer\\bufferManager.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\buffer\\bufferManager.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/bufferManager.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\buffer\\bufferPool.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\buffer\\bufferPool.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/bufferPool.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\buffer\\frame.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\buffer\\frame.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/frame.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\buffer\\lru.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\buffer\\lru.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/lru.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\buffer\\clock.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\buffer\\clock.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/buffer/clock.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
   "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\control\\control.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\control\\control.cpp",
   "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/control/control.cpp",
   "output": "src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj"

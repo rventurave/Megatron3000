@@ -5,14 +5,22 @@
 
 using namespace std;
 
+// Objetivo: Constructor de bloque
+// Input: Ninguno
+// Output: Inicializa el bloque con contenido vacío
+// Autor: Ronald Ventura
 bloque::bloque() {
     memset(bloqueB, 0, sizeof(bloqueB));
 }
 
+// Objetivo: Agrega un separador de registros del bloque
+// Input: contenido
+// Output: Agrega la cadena al bloque, separada por '|'
+// Autor: Ronald Ventura
 void bloque::agregarAlBloque(const char* contenido) {
     int lenActual = strlen(bloqueB);
     int lenNuevo = strlen(contenido);
-    if (lenActual + lenNuevo + 2 < 50000) {
+    if (lenActual + lenNuevo + 2 < 5000) {
         strcat(bloqueB, contenido);
         strcat(bloqueB, "|");
     } else {
@@ -20,6 +28,10 @@ void bloque::agregarAlBloque(const char* contenido) {
     }
 }
 
+// Objetivo: copia el contenido de un archivo de registro al bloque
+// Input: ruta - ruta del sector del disco
+// Output: Agrega las líneas del archivo al bloque
+// Autor: Ronald Ventura
 void bloque::procesarArchivoRegistro(const char* ruta) {
     ifstream archivo(ruta);
     if (!archivo) {
@@ -35,6 +47,10 @@ void bloque::procesarArchivoRegistro(const char* ruta) {
     archivo.close();
 }
 
+// Objetivo: Crea un bloque a partir de la ruta del bloque
+// Input: archivoRutas - ruta del bloque en disco
+// Output: Crea el bloque con el contenido de los archivos de registro
+// Autor: Ronald Ventura
 void bloque::crearBloque(const char* archivoRutas) {
     memset(bloqueB, 0, sizeof(bloqueB));
 
@@ -56,6 +72,10 @@ void bloque::crearBloque(const char* archivoRutas) {
     archivo.close();
 }
 
+// Objetivo: Muestra el contenido del bloque por consola
+// Input: Ninguno
+// Output: Imprime el contenido del bloque en formato legible
+// Autor: Ronald Ventura
 void bloque::mostrarBloque() {
     cout << "Contenido del bloque:\n";
 
@@ -69,9 +89,18 @@ void bloque::mostrarBloque() {
     cout << endl;
 }
 
+// Objetivo: Obtiene el contenido del bloque
+// Input: Ninguno
+// Output: Devuelve un puntero al contenido del bloque
+// Autor: Ronald Ventura
 const char* bloque::obtenerBloque() {
     return bloqueB;
 }
+
+//objetivo: Inserta una línea en el bloque
+// Input: linea - línea a insertar
+// Output: true si se insertó correctamente, false si no hay espacio
+// Autor: Ronald Ventura
 bool bloque::insertarLinea(const char* linea) {
     int lenActual = strlen(bloqueB);
     int lenLinea = strlen(linea);
@@ -84,6 +113,10 @@ bool bloque::insertarLinea(const char* linea) {
     }
 }
 
+// Objetivo: Vacía el bloque, eliminando todo su contenido
+// Input: Ninguno
+// Output: El bloque queda vacío
+// Autor: Ronald Ventura
 void bloque::vaciarBloque() {
     memset(bloqueB, 0, sizeof(bloqueB));
 }

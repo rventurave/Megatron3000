@@ -1,0 +1,119 @@
+void control::insertCSV()
+{
+    char nombreTabla[50];
+    cout << "Ingrese el nombre de la tabla: ";
+    cin >> nombreTabla;
+
+    string archivoCsv;
+    cout << "Ingrese el nombre del archivo CSV: ";
+    cin >> archivoCsv;
+    archivoCsv = "../../archivos/" + archivoCsv + ".csv";
+
+    int opcion;
+    cout << "Cantidad de registros a insertar" << endl;
+    cout << "0) Insertar todos los registros" << endl;
+    cout << "n) Insertar n registros" << endl;
+    cin >> opcion;
+
+    if (!_esquema.existeTabla(nombreTabla))
+    {
+        _esquema.generarEsquema(archivoCsv, nombreTabla);
+    }
+
+    char *esquemaTabla = _esquema.extraerEsquema(nombreTabla);
+
+    ifstream archivo(archivoCsv);
+    string linea;
+    getline(archivo, linea); // saltar encabezado CSV
+    string bloque = _headFile.asignarBloque(nombreTabla);
+    string sector = _headFile.asignarSector(bloque);
+    int bytes = _esquema.countBytes(nombreTabla);
+    int maxRegistrosPorBloque = _disk.getSizeBloque() / bytes;
+
+    int contadorTotal = 0;
+    int contadorBloque = 0;
+
+    while (getline(archivo, linea))
+    {
+        string separado = _archivo.separar(linea);
+        bool esValida = _esquema.validar(esquemaTabla, separado);
+        char *lineaConvertida = _esquema.formatearLinea(separado.c_str(), esquemaTabla);
+
+        if (esValida)
+        {
+            _bloque.insertarLinea(lineaConvertida);
+            contadorBloque++;
+            contadorTotal++;
+
+            // Si el bloque está lleno o se alcanzó la cantidad de inserciones deseadas
+            if (contadorBloque == maxRegistrosPorBloque || (opcion != 0 && contadorTotal == opcion))
+            {
+                const char *contenido = _bloque.obtenerBloque();
+                stringstream ss(contenido);
+                string registro;
+
+                while (getline(ss, registro, '|'))
+                {
+                    if (registro.empty())
+                        continue;
+
+                    bool insertado = _query.insert((char *)registro.c_str(), bytes, sector.c_str());
+                    _disk.setCapacidad(bytes);
+                    if (!insertado)
+                    {
+                        sector = _headFile.asignarSector(bloque);
+                        if (sector == "no")
+                        {
+                            bloque = _headFile.asignarBloque(nombreTabla);
+                            sector = _headFile.asignarSector(bloque);
+                        }
+                        _query.insert((char *)registro.c_str(), bytes, sector.c_str());
+                    }
+                    cout << "Registro insertado: " << registro << endl;
+                }
+
+                _bloque.vaciarBloque(); // vaciar bloque para nueva tanda
+                contadorBloque = 0;
+
+                if (opcion != 0 && contadorTotal == opcion)
+                    break;
+            }
+        }
+        else
+        {
+            cout << "Registro inválido: " << lineaConvertida << endl;
+        }
+    }
+
+    // Insertar lo que quede en el bloque si hay contenido restante
+    if (contadorBloque > 0)
+    {
+        const char *contenido = _bloque.obtenerBloque();
+        stringstream ss(contenido);
+        string registro;
+
+        while (getline(ss, registro, '|'))
+        {
+            if (registro.empty())
+                continue;
+
+            bool insertado = _query.insert((char *)registro.c_str(), bytes, sector.c_str());
+            _disk.setCapacidad(bytes);
+            if (!insertado)
+            {
+                sector = _headFile.asignarSector(bloque);
+                if (sector == "no")
+                {
+                    bloque = _headFile.asignarBloque(nombreTabla);
+                    sector = _headFile.asignarSector(bloque);
+                }
+                _query.insert((char *)registro.c_str(), bytes, sector.c_str());
+            }
+            cout << "Registro insertado (restante): " << registro << endl;
+        }
+
+        _bloque.vaciarBloque();
+    }
+
+    archivo.close();
+}

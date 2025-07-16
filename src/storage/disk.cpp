@@ -5,11 +5,16 @@
 #include "../include/storage/disk.h"
 using namespace std;
 namespace fs = std::filesystem;
+
+// Objetivo: Constructor por defecto del disco
+// Input: Ninguno
+// Output: Inicializa los parámetros del disco con valores predeterminados
+// Autor: Ronald Ventura
 disk::disk()
 {
     plato = 4;
     pistasPorPlato = 4;
-    superficie = 2;
+    superficie = 4;
     sectorPorPistas = 4;
     sizeSector = 4096;
     sizeBloque = sizeSector * 2;
@@ -23,6 +28,10 @@ disk::disk()
     sectoresPorBloque = sizeBloque / sizeSector;
 }
 
+// Objetivo: Constructor del disco con parámetros personalizados
+// Input: int _plato, int _pistasPorPlato, int _sectorPorPistas, int _sizeSector, int _sizebloque
+// Output: Inicializa los parámetros del disco con los valores proporcionados
+// Autor: Ronald Ventura
 disk::disk(int _plato, int _pistasPorPlato, int _sectorPorPistas, int _sizeSector, int _sizebloque)
 {
     plato = _plato;
@@ -39,6 +48,11 @@ disk::disk(int _plato, int _pistasPorPlato, int _sectorPorPistas, int _sizeSecto
     bloquesTotales = static_cast<int>(ceil(static_cast<float>(sectorPorPistas) / sectoresPorBloque));
     sectoresPorBloque = sizeBloque / sizeSector;
 }
+
+// Objetivo: Crea la estructura del disco en el sistema de archivos
+// Input: Ninguno
+// Output: Crea directorios y archivos para representar el disco y sus componentes
+// Autor: Ronald Ventura
 void disk::createDisk()
 {
     string nombreDisk = "../../disk";
@@ -127,6 +141,8 @@ void disk::createDisk()
         }
     }
 }
+
+// Métodos para obtener información del disco
 int disk::getPlato()
 {
     return plato;
@@ -176,11 +192,28 @@ int disk::getBloquesTotales()
     return bloquesTotales;
 }
 
+// Objetivo: Actualiza la capacidad del disco al insertar o elimnar registros
+// Input: int _capacidad - tamaño del registro
+// Output: Actualiza la capacidad del disco
+// Autor: Ronald Ventura
 void disk::setCapacidad(int _capacidad)
 {
-    capacidad = capacidad - _capacidad;
+    if (capacidad > 0)
+    {
+
+        capacidad = capacidad - _capacidad;
+    }
+    else
+    {
+        cout << "ya no hay espacio" << endl;
+    }
 }
 
+
+// Objetivo: Muestra la información del disco por consola
+// Input: Ninguno
+// Output: Imprime las características del disco, como capacidad, tamaño de bloque, sectores, etc.
+// Autor: Ronald Ventura
 void disk::informacionDisk()
 {
     cout << "---------------------------------------------------------------------" << endl;
@@ -194,6 +227,11 @@ void disk::informacionDisk()
     cout << "Sectores totales: " << getSectores() << endl;
     cout << "---------------------------------------------------------------------" << endl;
 }
+
+// Objetivo: Muestra la información de capacidad del disco por consola
+// Input: Ninguno
+// Output: Imprime la capacidad total, capacidad libre y ocupada del disco
+// Autor: Ronald Ventura
 void disk::informacionCapacidad()
 {
     cout << "---------------------------------------------------------------------" << endl;
@@ -205,5 +243,4 @@ void disk::informacionCapacidad()
     cout << "Capcacidad libre de disco: " << getCapacidad() << endl;
     cout << "Capacidad ocupada del disco: " << capacidad - getCapacidad() << endl;
     cout << "---------------------------------------------------------------------" << endl;
-    
 }

@@ -129,6 +129,126 @@ Megatron3000/fast:
 	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/build
 .PHONY : Megatron3000/fast
 
+buffer/bufferManager.obj: buffer/bufferManager.cpp.obj
+.PHONY : buffer/bufferManager.obj
+
+# target to build an object file
+buffer/bufferManager.cpp.obj:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.obj
+.PHONY : buffer/bufferManager.cpp.obj
+
+buffer/bufferManager.i: buffer/bufferManager.cpp.i
+.PHONY : buffer/bufferManager.i
+
+# target to preprocess a source file
+buffer/bufferManager.cpp.i:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.i
+.PHONY : buffer/bufferManager.cpp.i
+
+buffer/bufferManager.s: buffer/bufferManager.cpp.s
+.PHONY : buffer/bufferManager.s
+
+# target to generate assembly for a file
+buffer/bufferManager.cpp.s:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/bufferManager.cpp.s
+.PHONY : buffer/bufferManager.cpp.s
+
+buffer/bufferPool.obj: buffer/bufferPool.cpp.obj
+.PHONY : buffer/bufferPool.obj
+
+# target to build an object file
+buffer/bufferPool.cpp.obj:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj
+.PHONY : buffer/bufferPool.cpp.obj
+
+buffer/bufferPool.i: buffer/bufferPool.cpp.i
+.PHONY : buffer/bufferPool.i
+
+# target to preprocess a source file
+buffer/bufferPool.cpp.i:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.i
+.PHONY : buffer/bufferPool.cpp.i
+
+buffer/bufferPool.s: buffer/bufferPool.cpp.s
+.PHONY : buffer/bufferPool.s
+
+# target to generate assembly for a file
+buffer/bufferPool.cpp.s:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.s
+.PHONY : buffer/bufferPool.cpp.s
+
+buffer/clock.obj: buffer/clock.cpp.obj
+.PHONY : buffer/clock.obj
+
+# target to build an object file
+buffer/clock.cpp.obj:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj
+.PHONY : buffer/clock.cpp.obj
+
+buffer/clock.i: buffer/clock.cpp.i
+.PHONY : buffer/clock.i
+
+# target to preprocess a source file
+buffer/clock.cpp.i:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.i
+.PHONY : buffer/clock.cpp.i
+
+buffer/clock.s: buffer/clock.cpp.s
+.PHONY : buffer/clock.s
+
+# target to generate assembly for a file
+buffer/clock.cpp.s:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.s
+.PHONY : buffer/clock.cpp.s
+
+buffer/frame.obj: buffer/frame.cpp.obj
+.PHONY : buffer/frame.obj
+
+# target to build an object file
+buffer/frame.cpp.obj:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj
+.PHONY : buffer/frame.cpp.obj
+
+buffer/frame.i: buffer/frame.cpp.i
+.PHONY : buffer/frame.i
+
+# target to preprocess a source file
+buffer/frame.cpp.i:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.i
+.PHONY : buffer/frame.cpp.i
+
+buffer/frame.s: buffer/frame.cpp.s
+.PHONY : buffer/frame.s
+
+# target to generate assembly for a file
+buffer/frame.cpp.s:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.s
+.PHONY : buffer/frame.cpp.s
+
+buffer/lru.obj: buffer/lru.cpp.obj
+.PHONY : buffer/lru.obj
+
+# target to build an object file
+buffer/lru.cpp.obj:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj
+.PHONY : buffer/lru.cpp.obj
+
+buffer/lru.i: buffer/lru.cpp.i
+.PHONY : buffer/lru.i
+
+# target to preprocess a source file
+buffer/lru.cpp.i:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.i
+.PHONY : buffer/lru.cpp.i
+
+buffer/lru.s: buffer/lru.cpp.s
+.PHONY : buffer/lru.s
+
+# target to generate assembly for a file
+buffer/lru.cpp.s:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.s
+.PHONY : buffer/lru.cpp.s
+
 control/control.obj: control/control.cpp.obj
 .PHONY : control/control.obj
 
@@ -330,6 +450,21 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Megatron3000
+	@echo ... buffer/bufferManager.obj
+	@echo ... buffer/bufferManager.i
+	@echo ... buffer/bufferManager.s
+	@echo ... buffer/bufferPool.obj
+	@echo ... buffer/bufferPool.i
+	@echo ... buffer/bufferPool.s
+	@echo ... buffer/clock.obj
+	@echo ... buffer/clock.i
+	@echo ... buffer/clock.s
+	@echo ... buffer/frame.obj
+	@echo ... buffer/frame.i
+	@echo ... buffer/frame.s
+	@echo ... buffer/lru.obj
+	@echo ... buffer/lru.i
+	@echo ... buffer/lru.s
 	@echo ... control/control.obj
 	@echo ... control/control.i
 	@echo ... control/control.s

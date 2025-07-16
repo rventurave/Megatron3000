@@ -1,0 +1,2 @@
+0#../../disk/plato2/superficie1/pista1/sector3.txt
+0#../../disk/plato2/superficie2/pista1/sector3.txt

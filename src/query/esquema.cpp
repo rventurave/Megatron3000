@@ -4,6 +4,10 @@
 using namespace std;
 namespace fs = filesystem;
 
+// Objetivo: Crea el esquema de la base de datos
+// Input: Ninguno
+// Output: Crea un directorio y un archivo de esquema
+// Autor: Ronald Ventura
 void esquema::creaEsquema()
 {
     string nombreEsquema = "../../esquema";
@@ -25,6 +29,11 @@ void esquema::creaEsquema()
     string archivoEsquema = nombreEsquema + "/esquema.txt";
     ofstream archivo(archivoEsquema);
 }
+
+// Objetivo: Verifica si una tabla existe en el esquema
+// Input: nombreTabla - nombre de la tabla a buscar
+// Output: true si la tabla existe, false si no
+// Autor: Ronald Ventura
 bool esquema::existeTabla(char *nombreTabla)
 {
     ifstream archivo("../../esquema/esquema.txt");
@@ -50,6 +59,11 @@ bool esquema::existeTabla(char *nombreTabla)
 
     return false;
 }
+
+// Objetivo: Cuenta los bytes de la tabla
+// Input: nombreTabla - nombre de la tabla a contar bytes
+// Output: número de bytes necesarios para almacenar la tabla, -1 si no se encuentra
+// Autor: Ronald Ventura
 int esquema::countBytes(char *nombreTabla)
 {
     ifstream archivo("../../esquema/esquema.txt");
@@ -115,6 +129,11 @@ int esquema::countBytes(char *nombreTabla)
 
     return -1;
 }
+
+//objetivo: Extrae el esquema de una tabla
+// Input: nombreTabla - nombre de la tabla a buscar
+// Output: cadena con el esquema de la tabla, o cadena vacía si no se encuentra
+//autor: Ronald Ventura
 char *esquema::extraerEsquema(char *nombreTabla)
 {
     const int MAX_LINEA = 4096;
@@ -156,9 +175,14 @@ char *esquema::extraerEsquema(char *nombreTabla)
     return resultado;
 }
 
+
 const int MAX_COLUMNAS = 50;
 const int MAX_LINEA = 1024;
 
+// Objetivo: Verifica si una cadena es un entero válido
+// Input: s - cadena a verificar
+// Output: true si es un entero, false si no
+//autor: Ronald Ventura
 bool esquema::esEntero(char* s) {
     int i = 0;
     if (s[0] == '-' || s[0] == '+') i++;
@@ -170,6 +194,11 @@ bool esquema::esEntero(char* s) {
     }
     return tieneDigito;
 }
+
+//objetivo: Verifica si una cadena es un float válido
+// Input: s - cadena a verificar
+// Output: true si es un float, false si no
+//autor: Ronald Ventura
 bool esquema::esFloat(char* s) {
     int i = 0;
     if (s[0] == '-' || s[0] == '+') i++;
@@ -189,6 +218,11 @@ bool esquema::esFloat(char* s) {
 
     return tienePunto || tieneDigito;
 }
+
+// Objetivo: Limpia espacios en blanco al inicio y al final de un campo
+// Input: campo - cadena a limpiar
+// Output: campo limpio sin espacios al inicio y al final
+// Autor: Ronald Ventura
 void esquema::limpiarCampo(char* campo) {
     int ini = 0, fin = 0;
     while (campo[ini] && isspace(campo[ini])) ini++;
@@ -203,6 +237,10 @@ void esquema::limpiarCampo(char* campo) {
     campo[len] = '\0';
 }
 
+// Objetivo: Genera el esquema de una tabla a partir de un archivo CSV
+// Input: archivoCSV - ruta del archivo CSV, nombreTabla - nombre de la tabla
+// Output: Esquema generado y guardado en el archivo esquema.txt
+// Autor: Ronald Ventura
 void esquema::generarEsquema(string archivoCSV, string nombreTabla) {
     static char resultado[4096];
     resultado[0] = '\0';
@@ -321,6 +359,11 @@ void esquema::generarEsquema(string archivoCSV, string nombreTabla) {
     esquemaFile << resultado << endl;
     esquemaFile.close();
 }
+
+// Objetivo: Valida una línea de datos contra el esquema de una tabla
+// Input: esquema - esquema de la tabla, linea - línea de datos a validar
+// Output: true si la línea es válida, false si no
+// Autor: Ronald Ventura
 bool esquema::validar(char* esquema, string linea) {
     char nombreTabla[64];
     char tipos[50][7];
@@ -397,6 +440,7 @@ bool esquema::validar(char* esquema, string linea) {
     return true;
 }
 
+
 string esquema::extraerIdentificadores(string esquema) {
     stringstream ss(esquema);
     string token;
@@ -417,6 +461,10 @@ string esquema::extraerIdentificadores(string esquema) {
     return identificadores;
 }
 
+// Objetivo: Formatea una línea de datos según el esquema de la tabla
+// Input: linea - línea de datos, esquema - esquema de la tabla 
+// Output: cadena formateada con los campos ajustados al tamaño especificado en el esquema
+// Autor: Ronald Ventura
 char *esquema::formatearLinea(const char *linea, char *esquema)
 {
     static char resultado[1024];

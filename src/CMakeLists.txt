@@ -6,7 +6,13 @@ set(SOURCES
         query/query.cpp
         query/esquema.cpp
         query/archivo.cpp
+        buffer/bufferManager.cpp
+        buffer/bufferPool.cpp
+        buffer/frame.cpp
+        buffer/lru.cpp
+        buffer/clock.cpp
         control/control.cpp
+        
 )
 
 set(HEADERS include)
