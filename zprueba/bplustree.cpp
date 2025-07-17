@@ -76,6 +76,7 @@ private:
             if (it == nodo->claves.end()) return false;
             nodo->claves.erase(it);
 
+            // Si es raíz o tiene suficientes claves, no necesita reorganización
             if (nodo == raiz || nodo->claves.size() >= (maxClavesHoja + 1) / 2) return true;
 
             NodoBPlus* hermanoIzq = nullptr;
@@ -87,56 +88,67 @@ private:
                     hermanoDer = padre->hijos[indicePadre + 1];
             }
 
+            // Redistribución con hermano izquierdo
             if (hermanoIzq && hermanoIzq->claves.size() > (maxClavesHoja + 1) / 2) {
                 nodo->claves.insert(nodo->claves.begin(), hermanoIzq->claves.back());
                 hermanoIzq->claves.pop_back();
                 padre->claves[indicePadre - 1] = nodo->claves[0];
                 return true;
             }
-
+            // Redistribución con hermano derecho
             if (hermanoDer && hermanoDer->claves.size() > (maxClavesHoja + 1) / 2) {
                 nodo->claves.push_back(hermanoDer->claves.front());
                 hermanoDer->claves.erase(hermanoDer->claves.begin());
                 padre->claves[indicePadre] = hermanoDer->claves[0];
                 return true;
             }
-
+            // Fusión con hermano izquierdo
             if (hermanoIzq) {
                 hermanoIzq->claves.insert(hermanoIzq->claves.end(), nodo->claves.begin(), nodo->claves.end());
                 hermanoIzq->siguiente = nodo->siguiente;
                 padre->claves.erase(padre->claves.begin() + indicePadre - 1);
                 padre->hijos.erase(padre->hijos.begin() + indicePadre);
                 delete nodo;
+                // Si el padre es la raíz y queda sin claves, actualiza la raíz
+                if (padre == raiz && padre->claves.empty()) {
+                    NodoBPlus* temp = padre;
+                    raiz = padre->hijos[0];
+                    delete temp;
+                }
                 return true;
             }
-
+            // Fusión con hermano derecho
             if (hermanoDer) {
                 nodo->claves.insert(nodo->claves.end(), hermanoDer->claves.begin(), hermanoDer->claves.end());
                 nodo->siguiente = hermanoDer->siguiente;
                 padre->claves.erase(padre->claves.begin() + indicePadre);
                 padre->hijos.erase(padre->hijos.begin() + indicePadre + 1);
                 delete hermanoDer;
+                if (padre == raiz && padre->claves.empty()) {
+                    NodoBPlus* temp = padre;
+                    raiz = padre->hijos[0];
+                    delete temp;
+                }
                 return true;
             }
         } else {
             int pos = std::upper_bound(nodo->claves.begin(), nodo->claves.end(), clave) - nodo->claves.begin();
             bool result = eliminarRec(nodo->hijos[pos], clave, nodo, pos);
-
             if (!result) return false;
 
-            // Reemplazo clave promovida en nodo interno si ya no es válida
+            // Actualiza claves promovidas en el nodo interno
             for (int i = 0; i < (int)nodo->claves.size(); ++i) {
-                if (nodo->claves[i] != nodo->hijos[i + 1]->claves.front()) {
+                if (!nodo->hijos[i + 1]->claves.empty() && nodo->claves[i] != nodo->hijos[i + 1]->claves.front()) {
                     nodo->claves[i] = nodo->hijos[i + 1]->claves.front();
                 }
             }
 
+            // Si la raíz queda sin claves, actualiza la raíz
             if (nodo == raiz && nodo->claves.empty()) {
                 NodoBPlus* temp = nodo;
                 raiz = nodo->hijos[0];
                 delete temp;
             }
-
             return true;
         }
         return false;
