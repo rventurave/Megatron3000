@@ -73,6 +73,12 @@
 },
 {
   "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\bplusstree\\bplusstree.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\bplusstree\\bplusstree.cpp",
+  "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/bplusstree/bplusstree.cpp",
+  "output": "src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.obj"
+},
+{
+  "directory": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/build/src",
   "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/Megatron3000.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Megatron3000.dir\\control\\control.cpp.obj -c C:\\Users\\Zenbook\\Desktop\\CUMPUTER-CIENCE\\CUMPUTER-SCIENCE\\BDII\\Megatron3000\\src\\control\\control.cpp",
   "file": "C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/control/control.cpp",
   "output": "src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj"

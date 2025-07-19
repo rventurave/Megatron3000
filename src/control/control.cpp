@@ -4,8 +4,9 @@
 // Input: tamaño del buffer
 // Output: instancia inicializada con estructuras de disco y buffer
 // Autor: Ronald Ventura
-control::control(int tamBuffer)
-    : _lru(tamBuffer), _clock(tamBuffer) {}
+control::control(int tamBuffer, int ordenArbol)
+    : _lru(tamBuffer), _clock(tamBuffer), _bPlusTree(ordenArbol) {}
+
 // Objetivo: Insertar datos desde CSV al sistema
 // Input: Ninguno (internamente usa archivos CSV)
 // Output: Datos insertados y almacenados en disco
@@ -708,12 +709,7 @@ int control::eliminarBloque(const std::string &pageID, bloque *bPtr, char *nombr
     return indice;
 }
 
-void control::consultaWherePage(
-    char *nombreTabla,
-    const char *rutaWhere,
-    char *campo,
-    char *operador,
-    char *valor)
+void control::consultaWherePage(char *nombreTabla,const char *rutaWhere,char *campo,char *operador,char *valor)
 {
     char *esquemaTabla = _esquema.extraerEsquema(nombreTabla);
 
@@ -991,6 +987,8 @@ void control::simularBufferLRU()
 
     } while (opcion != 5);
 }
+
+
 void control::simularBufferClock()
 {
     bloques.clear();

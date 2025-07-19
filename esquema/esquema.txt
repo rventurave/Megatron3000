@@ -1,0 +1,1 @@
+titanic#PassengerId#int#2#Survived#int#1#Pclass#int#1#Name#string#66#Sex#string#11#Age#int#2#SibSp#int#1#Parch#int#1#Ticket#string#22#Fare#float#7#Cabin#string#11#Embarked#string#1

@@ -12,6 +12,7 @@
 #include "../include/storage/bloque.h"
 #include "../include/buffer/LRU.h"
 #include "../include/buffer/clock.h"
+#include "../include/bplusstree/bplusstree.h"
 using namespace std;
 
 class control
@@ -27,8 +28,11 @@ private:
     bloque _bloque;
     LRU _lru;
 
+    bPlussTree _bPlusTree;
+    int _tamBuffer;
+    int _ordenArbol;
 public:
-    control(int tamBuffer);
+    control(int tamBuffer, int ordenArbol);
     void menu();
     void insertCSV();
     void mostrarTabla(string nombreTabla);

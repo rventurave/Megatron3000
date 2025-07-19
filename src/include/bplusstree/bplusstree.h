@@ -1,38 +1,53 @@
-#ifndef ARBOL_BPLUS_H
-#define ARBOL_BPLUS_H
+#ifndef BPLUSTREE_H
+#define BPLUSTREE_H
 
 #include <vector>
 #include <map>
 #include <iostream>
-#include <fstream>
 
-struct NodoBPlus {
-    bool esHoja;
-    std::vector<int> claves;
-    std::vector<NodoBPlus*> hijos;
-    NodoBPlus* siguiente;
+// Declaración adelantada para evitar dependencias circulares si fuera necesario,
+// aunque en este caso NodoBPlus es una estructura y no hay problema.
+struct NodoBPlus;
 
-    NodoBPlus(bool hoja);
-};
-
-class bPlussTree {
+class bPlussTree
+{
 private:
-    NodoBPlus* raiz;
-    int maxClavesHoja;
+    // Estructura interna para los nodos del árbol B+
+    struct NodoBPlus
+    {
+        bool esHoja;
+        std::vector<int> claves;
+        std::vector<NodoBPlus *> hijos;
+        NodoBPlus *siguiente; // Puntero al siguiente nodo hoja en el mismo nivel
 
-    void dividirHoja(NodoBPlus* nodo, NodoBPlus** nuevoNodo, int* clavePromovida);
-    void dividirInterno(NodoBPlus* nodo, NodoBPlus** nuevoNodo, int* clavePromovida);
-    void insertarRec(NodoBPlus* nodo, int clave, NodoBPlus** nuevoNodo, int* clavePromovida);
-    bool eliminarRec(NodoBPlus* nodo, int clave, NodoBPlus* padre, int indicePadre);
-    void generarDot(NodoBPlus* nodo, std::ostream& out, int& id, std::map<NodoBPlus*, int>& ids);
+        NodoBPlus(bool hoja);
+    };
+
+    NodoBPlus *raiz;
+    int maxClavesHoja;
+    int minClavesHoja;
+    int minClavesInterno;
+    int minHijosInterno;
+
+    // Métodos privados auxiliares
+    void dividirHoja(NodoBPlus *nodo, NodoBPlus **nuevoNodo, int *clavePromovida);
+    void dividirInterno(NodoBPlus *nodo, NodoBPlus **nuevoNodo, int *clavePromovida);
+    void insertarRec(NodoBPlus *nodo, int clave, NodoBPlus **nuevoNodo, int *clavePromovida);
+    bool manejarSubflujoHoja(NodoBPlus *nodo, NodoBPlus *padre, int indiceEnPadre);
+    bool manejarSubflujoInterno(NodoBPlus *nodo, NodoBPlus *padre, int indiceEnPadre);
+    void actualizarSeparadoras(NodoBPlus *padre);
+    bool eliminarRec(NodoBPlus *nodoActual, int clave, NodoBPlus *padre, int indiceEnPadre);
+    void generarDot(NodoBPlus *nodo, std::ostream &out, int &id, std::map<NodoBPlus *, int> &ids);
 
 public:
+    // Constructor del árbol B+
     bPlussTree(int max);
 
+    // Métodos públicos para operar el árbol
     void insertar(int clave);
     void eliminar(int clave);
     void imprimir();
     void generarImagen();
 };
 
-#endif
+#endif // BPLUSTREE_H
