@@ -129,6 +129,30 @@ Megatron3000/fast:
 	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/build
 .PHONY : Megatron3000/fast
 
+bplusstree/bplusstree.obj: bplusstree/bplusstree.cpp.obj
+.PHONY : bplusstree/bplusstree.obj
+
+# target to build an object file
+bplusstree/bplusstree.cpp.obj:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.obj
+.PHONY : bplusstree/bplusstree.cpp.obj
+
+bplusstree/bplusstree.i: bplusstree/bplusstree.cpp.i
+.PHONY : bplusstree/bplusstree.i
+
+# target to preprocess a source file
+bplusstree/bplusstree.cpp.i:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.i
+.PHONY : bplusstree/bplusstree.cpp.i
+
+bplusstree/bplusstree.s: bplusstree/bplusstree.cpp.s
+.PHONY : bplusstree/bplusstree.s
+
+# target to generate assembly for a file
+bplusstree/bplusstree.cpp.s:
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\Megatron3000.dir\build.make src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.s
+.PHONY : bplusstree/bplusstree.cpp.s
+
 buffer/bufferManager.obj: buffer/bufferManager.cpp.obj
 .PHONY : buffer/bufferManager.obj
 
@@ -450,6 +474,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Megatron3000
+	@echo ... bplusstree/bplusstree.obj
+	@echo ... bplusstree/bplusstree.i
+	@echo ... bplusstree/bplusstree.s
 	@echo ... buffer/bufferManager.obj
 	@echo ... buffer/bufferManager.i
 	@echo ... buffer/bufferManager.s

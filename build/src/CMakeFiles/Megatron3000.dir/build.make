@@ -251,11 +251,26 @@ src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Megatron3000.dir/buffer/clock.cpp.s"
 	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\buffer\clock.cpp -o CMakeFiles\Megatron3000.dir\buffer\clock.cpp.s
 
+src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.obj: src/CMakeFiles/Megatron3000.dir/flags.make
+src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.obj: src/CMakeFiles/Megatron3000.dir/includes_CXX.rsp
+src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.obj: C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/bplusstree/bplusstree.cpp
+src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.obj: src/CMakeFiles/Megatron3000.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.obj"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.obj -MF CMakeFiles\Megatron3000.dir\bplusstree\bplusstree.cpp.obj.d -o CMakeFiles\Megatron3000.dir\bplusstree\bplusstree.cpp.obj -c C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\bplusstree\bplusstree.cpp
+
+src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.i"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\bplusstree\bplusstree.cpp > CMakeFiles\Megatron3000.dir\bplusstree\bplusstree.cpp.i
+
+src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.s"
+	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\bplusstree\bplusstree.cpp -o CMakeFiles\Megatron3000.dir\bplusstree\bplusstree.cpp.s
+
 src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj: src/CMakeFiles/Megatron3000.dir/flags.make
 src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj: src/CMakeFiles/Megatron3000.dir/includes_CXX.rsp
 src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj: C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/control/control.cpp
 src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj: src/CMakeFiles/Megatron3000.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj"
 	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj -MF CMakeFiles\Megatron3000.dir\control\control.cpp.obj.d -o CMakeFiles\Megatron3000.dir\control\control.cpp.obj -c C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\src\control\control.cpp
 
 src/CMakeFiles/Megatron3000.dir/control/control.cpp.i: cmake_force
@@ -280,6 +295,7 @@ Megatron3000_OBJECTS = \
 "CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj" \
 "CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj" \
 "CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj" \
+"CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.obj" \
 "CMakeFiles/Megatron3000.dir/control/control.cpp.obj"
 
 # External object files for target Megatron3000
@@ -297,12 +313,13 @@ src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/buffer/bufferPool.cpp.obj
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/buffer/frame.cpp.obj
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/buffer/lru.cpp.obj
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/buffer/clock.cpp.obj
+src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/bplusstree/bplusstree.cpp.obj
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/build.make
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/linkLibs.rsp
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/objects1.rsp
 src/Megatron3000.exe: src/CMakeFiles/Megatron3000.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Megatron3000.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable Megatron3000.exe"
 	cd /d C:\Users\Zenbook\Desktop\CUMPUTER-CIENCE\CUMPUTER-SCIENCE\BDII\Megatron3000\build\src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Megatron3000.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
