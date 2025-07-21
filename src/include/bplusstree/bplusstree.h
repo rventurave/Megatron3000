@@ -38,6 +38,7 @@ private:
     void actualizarSeparadoras(NodoBPlus *padre);
     bool eliminarRec(NodoBPlus *nodoActual, int clave, NodoBPlus *padre, int indiceEnPadre);
     void generarDot(NodoBPlus *nodo, std::ostream &out, int &id, std::map<NodoBPlus *, int> &ids);
+    bool buscarRec(NodoBPlus *nodo, int clave) const;
 
 public:
     // Constructor del árbol B+
@@ -48,6 +49,10 @@ public:
     void eliminar(int clave);
     void imprimir();
     void generarImagen();
+
+    // Métodos de búsqueda
+    bool buscar(int clave) const;
+
 };
 
 #endif // BPLUSTREE_H

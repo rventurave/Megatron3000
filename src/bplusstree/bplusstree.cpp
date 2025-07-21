@@ -16,6 +16,20 @@ bPlussTree::bPlussTree(int max) : maxClavesHoja(max)
 }
 
 // Implementación de métodos privados
+// Busca una clave en el árbol B+ y retorna true si existe
+bool bPlussTree::buscarRec(NodoBPlus *nodo, int clave) const
+{
+    if (!nodo) return false;
+    if (nodo->esHoja)
+    {
+        return std::find(nodo->claves.begin(), nodo->claves.end(), clave) != nodo->claves.end();
+    }
+    // Buscar el hijo correspondiente
+    int pos = std::upper_bound(nodo->claves.begin(), nodo->claves.end(), clave) - nodo->claves.begin();
+    return buscarRec(nodo->hijos[pos], clave);
+}
+
+// ...existing code...
 
 void bPlussTree::dividirHoja(NodoBPlus *nodo, NodoBPlus **nuevoNodo, int *clavePromovida)
 {
@@ -364,6 +378,13 @@ void bPlussTree::generarDot(NodoBPlus *nodo, std::ostream &out, int &id, std::ma
 }
 
 // Implementación de métodos públicos
+// Método público para buscar una clave en el árbol B+
+bool bPlussTree::buscar(int clave) const
+{
+    return buscarRec(raiz, clave);
+}
+
+// ...existing code...
 
 void bPlussTree::insertar(int clave)
 {

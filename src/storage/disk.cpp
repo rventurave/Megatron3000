@@ -12,11 +12,11 @@ namespace fs = std::filesystem;
 // Autor: Ronald Ventura
 disk::disk()
 {
-    plato = 4;
-    pistasPorPlato = 4;
-    superficie = 4;
-    sectorPorPistas = 4;
-    sizeSector = 4096;
+    plato = 2;
+    pistasPorPlato = 2;
+    superficie = 2;
+    sectorPorPistas = 2;
+    sizeSector = 1000;
     sizeBloque = sizeSector * 2;
 
     capacidad = superficie * plato * pistasPorPlato * sectorPorPistas * sizeSector;

@@ -1,0 +1,19 @@
+digraph BPlusTree {
+node [shape=plaintext];
+n0 [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="lightgray"><TR><TD>21</TD></TR></TABLE>>, shape=plaintext];
+n1 [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="lightgray"><TR><TD>11</TD></TR></TABLE>>, shape=plaintext];
+n2 [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="lightblue"><TR><TD>1</TD></TR></TABLE>>, shape=plaintext];
+n3 [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="lightblue"><TR><TD>11</TD></TR></TABLE>>, shape=plaintext];
+n4 [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="lightblue"><TR><TD>21</TD></TR></TABLE>>, shape=plaintext];
+n5 [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="lightblue"><TR><TD>31</TD><TD>41</TD></TR></TABLE>>, shape=plaintext];
+n4 -> n5 [color=blue, style=dashed, constraint=false];
+n3 -> n4 [color=blue, style=dashed, constraint=false];
+n2 -> n3 [color=blue, style=dashed, constraint=false];
+n1 -> n2;
+n1 -> n3;
+n0 -> n1;
+n6 [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="lightgray"><TR><TD>31</TD></TR></TABLE>>, shape=plaintext];
+n6 -> n4;
+n6 -> n5;
+n0 -> n6;
+}

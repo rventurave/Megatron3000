@@ -254,4 +254,24 @@ src/CMakeFiles/Megatron3000.dir/control/control.cpp.obj: \
  C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/include/buffer/bufferPool.h \
  C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/include/buffer/frame.h \
  C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/include/buffer/clock.h \
- C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/include/bplusstree/bplusstree.h
+ C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/include/bplusstree/bplusstree.h \
+ C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/include/hashExtendido/hashExtendido.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/memory \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/stl_raw_storage_iter.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/shared_ptr_atomic.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/atomic_base.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/atomic_lockfree_defines.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/atomic_wait.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/std_mutex.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/backward/auto_ptr.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/ranges_uninitialized.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/pstl/glue_memory_defs.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/functional \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/unordered_map \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/unordered_map.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/hashtable.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/hashtable_policy.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/enable_special_members.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/array \
+ C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/hashExtendido/hashExtendido.tpp \
+ C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/include/hashExtendido/hashExtendido.h

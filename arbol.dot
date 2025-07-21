@@ -1,0 +1,4 @@
+digraph BPlusTree {
+node [shape=plaintext];
+n0 [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" BGCOLOR="lightblue"><TR></TR></TABLE>>, shape=plaintext];
+}

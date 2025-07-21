@@ -146,4 +146,11 @@ src/CMakeFiles/Megatron3000.dir/query/archivo.cpp.obj: \
  C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
  C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/fstream.tcc \
  C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/iostream \
- C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/include/query/archivo.h
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/sstream \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/sstream.tcc \
+ C:/Users/Zenbook/Desktop/CUMPUTER-CIENCE/CUMPUTER-SCIENCE/BDII/Megatron3000/src/include/query/archivo.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/vector \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/stl_uninitialized.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/stl_vector.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/stl_bvector.h \
+ C:/MinGW/lib/gcc/x86_64-w64-mingw32/15.1.0/include/c++/bits/vector.tcc

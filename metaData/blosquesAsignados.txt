@@ -1,1 +1,5 @@
 titanic#../../metaData/bloque1.txt
+titanic#../../metaData/bloque2.txt
+titanic#../../metaData/bloque3.txt
+titanic#../../metaData/bloque4.txt
+titanic#../../metaData/bloque5.txt

@@ -4,35 +4,35 @@
 #include "../include/hashExtendido/hashExtendido.h"
 
 // --- Implementación Bucket ---
-template <typename T>
-Bucket<T>::Bucket(int cap, int prof) : capacidad(cap), profundidadLocal(prof) {}
+template <typename K, typename V>
+Bucket<K, V>::Bucket(int cap, int prof) : capacidad(cap), profundidadLocal(prof) {}
 
-template <typename T>
-bool Bucket<T>::lleno() const {
+template <typename K, typename V>
+bool Bucket<K, V>::lleno() const {
     return elementos.size() >= capacidad;
 }
 
-template <typename T>
-bool Bucket<T>::agregar(const T& valor) {
+template <typename K, typename V>
+bool Bucket<K, V>::agregar(const K& clave, const V& valor) {
     if (!lleno()) {
-        elementos.push_back(valor);
+        elementos.push_back(std::make_pair(clave, valor));
         return true;
     }
     return false;
 }
 
-template <typename T>
-bool Bucket<T>::contiene(const T& valor) const {
+template <typename K, typename V>
+bool Bucket<K, V>::contiene(const K& clave) const {
     for (const auto& e : elementos) {
-        if (e == valor) return true;
+        if (e.first == clave) return true;
     }
     return false;
 }
 
-template <typename T>
-bool Bucket<T>::eliminar(const T& valor) {
+template <typename K, typename V>
+bool Bucket<K, V>::eliminar(const K& clave) {
     for (size_t i = 0; i < elementos.size(); ++i) {
-        if (elementos[i] == valor) {
+        if (elementos[i].first == clave) {
             elementos.erase(elementos.begin() + i);
             return true;
         }
@@ -40,49 +40,57 @@ bool Bucket<T>::eliminar(const T& valor) {
     return false;
 }
 
-template <typename T>
-void Bucket<T>::mostrar() const {
+template <typename K, typename V>
+V Bucket<K, V>::obtener(const K& clave) const {
+    for (const auto& e : elementos) {
+        if (e.first == clave) return e.second;
+    }
+    throw std::out_of_range("Clave no encontrada en el bucket");
+}
+
+template <typename K, typename V>
+void Bucket<K, V>::mostrar() const {
     std::cout << "Bucket(prof=" << profundidadLocal << ", elementos={";
     for (size_t i = 0; i < elementos.size(); ++i) {
-        std::cout << elementos[i];
+        std::cout << "[" << elementos[i].first << ": " << elementos[i].second << "]";
         if (i + 1 < elementos.size()) std::cout << ", ";
     }
     std::cout << "})";
 }
 
 // --- Implementación HashExtendido ---
-template <typename T>
-HashExtendido<T>::HashExtendido(int cap) : capacidadBucket(cap), profundidadGlobal(1) {
+template <typename K, typename V>
+HashExtendido<K, V>::HashExtendido(int cap) : capacidadBucket(cap), profundidadGlobal(1) {
     directorio.resize(1 << profundidadGlobal);
     for (int i = 0; i < (1 << profundidadGlobal); ++i)
-        directorio[i] = std::make_shared<Bucket<T>>(capacidadBucket, profundidadGlobal);
+        directorio[i] = std::make_shared<Bucket<K, V>>(capacidadBucket, profundidadGlobal);
 }
 
-template <typename T>
-size_t HashExtendido<T>::obtenerHash(const T& valor) const {
-    return std::hash<T>{}(valor);
+template <typename K, typename V>
+size_t HashExtendido<K, V>::obtenerHash(const K& clave) const {
+    return std::hash<K>{}(clave);
 }
 
-template <typename T>
-int HashExtendido<T>::obtenerIndice(size_t hash) const {
+template <typename K, typename V>
+int HashExtendido<K, V>::obtenerIndice(size_t hash) const {
     return hash & ((1 << profundidadGlobal) - 1);
 }
 
-template <typename T>
-void HashExtendido<T>::dividirBucket(int indice) {
+template <typename K, typename V>
+void HashExtendido<K, V>::dividirBucket(int indice) {
     auto viejo = directorio[indice];
     int profAnt = viejo->profundidadLocal;
     viejo->profundidadLocal++;
 
-    auto b0 = std::make_shared<Bucket<T>>(capacidadBucket, viejo->profundidadLocal);
-    auto b1 = std::make_shared<Bucket<T>>(capacidadBucket, viejo->profundidadLocal);
+    auto b0 = std::make_shared<Bucket<K, V>>(capacidadBucket, viejo->profundidadLocal);
+    auto b1 = std::make_shared<Bucket<K, V>>(capacidadBucket, viejo->profundidadLocal);
 
-    for (const auto& val : viejo->elementos) {
-        int bit = (obtenerHash(val) >> profAnt) & 1;
+    for (const auto& par : viejo->elementos) {
+        int bit = (obtenerHash(par.first) >> profAnt) & 1;
         if (bit == 0)
-            b0->agregar(val);
+            b0->agregar(par.first, par.second);
         else
-            b1->agregar(val);
+            b1->agregar(par.first, par.second);
     }
 
     viejo->elementos.clear();
@@ -95,8 +103,8 @@ void HashExtendido<T>::dividirBucket(int indice) {
     }
 }
 
-template <typename T>
-void HashExtendido<T>::fusionarBuckets(int indice) {
+template <typename K, typename V>
+void HashExtendido<K, V>::fusionarBuckets(int indice) {
     auto bucketActual = directorio[indice];
 
     if (bucketActual->elementos.empty() && bucketActual->profundidadLocal > 1) {
@@ -120,14 +128,14 @@ void HashExtendido<T>::fusionarBuckets(int indice) {
     }
 }
 
-template <typename T>
-void HashExtendido<T>::insertar(const T& valor) {
+template <typename K, typename V>
+void HashExtendido<K, V>::insertar(const K& clave, const V& valor) {
     while (true) {
-        size_t h = obtenerHash(valor);
+        size_t h = obtenerHash(clave);
         int indice = obtenerIndice(h);
         auto bucket = directorio[indice];
 
-        if (bucket->contiene(valor)) return;
+        if (bucket->contiene(clave)) return;
 
         if (bucket->lleno()) {
             if (bucket->profundidadLocal == profundidadGlobal) {
@@ -139,26 +147,32 @@ void HashExtendido<T>::insertar(const T& valor) {
             }
             dividirBucket(indice);
         } else {
-            bucket->agregar(valor);
+            bucket->agregar(clave, valor);
             break;
         }
     }
 }
 
-template <typename T>
-bool HashExtendido<T>::buscar(const T& valor) const {
-    size_t h = obtenerHash(valor);
-    int indice = obtenerIndice(h);
-    return directorio[indice]->contiene(valor);
+template <typename K, typename V>
+V HashExtendido<K, V>::buscar(const K& clave) const {
+    size_t hash = obtenerHash(clave);
+    int indice = obtenerIndice(hash);
+    auto bucket = directorio[indice];
+    for (const auto& par : bucket->elementos) {
+        if (par.first == clave) {
+            return par.second;
+        }
+    }
+    return -1;
 }
 
-template <typename T>
-bool HashExtendido<T>::eliminar(const T& valor) {
-    size_t h = obtenerHash(valor);
+template <typename K, typename V>
+bool HashExtendido<K, V>::eliminar(const K& clave) {
+    size_t h = obtenerHash(clave);
     int indice = obtenerIndice(h);
     auto bucket = directorio[indice];
 
-    if (bucket->eliminar(valor)) {
+    if (bucket->eliminar(clave)) {
         if (bucket->elementos.empty()) {
             fusionarBuckets(indice);
         }
@@ -168,13 +182,13 @@ bool HashExtendido<T>::eliminar(const T& valor) {
     }
 }
 
-template <typename T>
-void HashExtendido<T>::mostrar() const {
+template <typename K, typename V>
+void HashExtendido<K, V>::mostrar() const {
     std::cout << "\n--- Estado del Hash ---\n";
     std::cout << "Profundidad Global: " << profundidadGlobal << "\n";
     std::cout << "Tamano del Directorio: " << directorio.size() << "\n";
 
-    std::map<void*, std::shared_ptr<Bucket<T>>> unicos;
+    std::map<void*, std::shared_ptr<Bucket<K, V>>> unicos;
     for (int i = 0; i < directorio.size(); ++i) {
         std::cout << "   [" << std::setw(3) << std::bitset<8>(i).to_string().substr(8 - profundidadGlobal) << "] -> ";
         directorio[i]->mostrar();

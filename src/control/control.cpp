@@ -4,8 +4,8 @@
 // Input: tamaño del buffer
 // Output: instancia inicializada con estructuras de disco y buffer
 // Autor: Ronald Ventura
-control::control(int tamBuffer, int ordenArbol)
-    : _lru(tamBuffer), _clock(tamBuffer), _bPlusTree(ordenArbol) {}
+control::control(int tamBuffer, int ordenArbol, int capacidadBucket)
+    : _lru(tamBuffer), _clock(tamBuffer), _bPlusTree(ordenArbol), _hashExtendido(capacidadBucket) {}
 
 // Objetivo: Insertar datos desde CSV al sistema
 // Input: Ninguno (internamente usa archivos CSV)
@@ -44,7 +44,7 @@ void control::insertCSV()
     int maxRegistrosPorBloque = _disk.getSizeBloque() / bytes;
 
     int contadorTotal = 0;
-    int contadorBloque = 0;
+    int CapacidadBloque = 0;
 
     while (getline(archivo, linea))
     {
@@ -55,11 +55,11 @@ void control::insertCSV()
         if (esValida)
         {
             _bloque.insertarLinea(lineaConvertida);
-            contadorBloque++;
+            CapacidadBloque++;
             contadorTotal++;
 
             // Si el bloque esta lleno o se alcanzo la cantidad de inserciones deseadas
-            if (contadorBloque == maxRegistrosPorBloque || (opcion != 0 && contadorTotal == opcion))
+            if (CapacidadBloque == maxRegistrosPorBloque || (opcion != 0 && contadorTotal == opcion))
             {
                 const char *contenido = _bloque.obtenerBloque();
                 stringstream ss(contenido);
@@ -86,7 +86,7 @@ void control::insertCSV()
                 }
 
                 _bloque.vaciarBloque(); // vaciar bloque para nueva tanda
-                contadorBloque = 0;
+                CapacidadBloque = 0;
 
                 if (opcion != 0 && contadorTotal == opcion)
                     break;
@@ -99,7 +99,7 @@ void control::insertCSV()
     }
 
     // Insertar lo que quede en el bloque si hay contenido restante
-    if (contadorBloque > 0)
+    if (CapacidadBloque > 0)
     {
         const char *contenido = _bloque.obtenerBloque();
         stringstream ss(contenido);
@@ -412,7 +412,6 @@ void control::insertaDisco(const string &pageID, char *nombreTabla, string archi
     {
         _esquema.generarEsquema(archivoCsv, nombreTabla);
     }
-
     char *esquemaTabla = _esquema.extraerEsquema(nombreTabla);
 
     ifstream archivo(archivoCsv);
@@ -420,8 +419,10 @@ void control::insertaDisco(const string &pageID, char *nombreTabla, string archi
     getline(archivo, linea); // saltar encabezado CSV
 
     int bytes = _esquema.countBytes(nombreTabla);
+
     int maxRegistrosPorBloque = _disk.getSizeBloque() / bytes;
     int limiteRegistros = (opcion == 0) ? maxRegistrosPorBloque : opcion;
+    cout << "Cantidad de registros a insertar: " << limiteRegistros << endl;
 
     int contadorTotal = 0;
     _bloque.vaciarBloque();
@@ -489,6 +490,74 @@ void control::insertaDisco(const string &pageID, char *nombreTabla, string archi
 
     _bloque.vaciarBloque();
     archivo.close();
+}
+
+bool control::_insert(const string &pageID, char *nombreTabla, string archivoCsv, int opcion)
+{
+    string rutaBloqueUnico = "../../metaData/bloque" + pageID + ".txt";
+
+    if (!_esquema.existeTabla(nombreTabla))
+    {
+        _esquema.generarEsquema(archivoCsv, nombreTabla);
+    }
+    char *esquemaTabla = _esquema.extraerEsquema(nombreTabla);
+
+    int bytes = _esquema.countBytes(nombreTabla);
+
+    int maxRegistrosPorBloque = _disk.getSizeBloque() / bytes;
+    int limiteRegistros = (opcion == 0) ? maxRegistrosPorBloque : opcion;
+    cout << "Cantidad de registros a insertar: " << limiteRegistros << endl;
+
+    const char *contenido = _bloque.obtenerBloque();
+    stringstream ss(contenido);
+    string registro;
+    string ultimoSector = "";
+
+    int registrosInsertados = 0;
+
+    while (getline(ss, registro, '|') && registrosInsertados < limiteRegistros)
+    {
+        if (registro.empty())
+            continue;
+
+        bool insertado = false;
+        ifstream archivoSectores(rutaBloqueUnico);
+        string lineaSector;
+
+        while (getline(archivoSectores, lineaSector))
+        {
+            size_t pos = lineaSector.find('#');
+            if (pos == string::npos)
+                continue;
+
+            string rutaSector = lineaSector.substr(pos + 1);
+
+            insertado = _query.insert((char *)registro.c_str(), bytes, rutaSector.c_str());
+            if (insertado)
+            {
+                _disk.setCapacidad(bytes);
+                if (rutaSector != ultimoSector)
+                {
+                    cout << "Insertando en sector: " << rutaSector << endl;
+                    ultimoSector = rutaSector;
+                }
+                registrosInsertados++;
+                _bloque.eliminarPrimeraLinea(); // Eliminar la primera línea del bloque
+                break;
+            }
+        }
+
+        archivoSectores.close();
+
+        // Si no se pudo insertar el registro en ningún sector
+        if (!insertado)
+        {
+            cout << "No se pudo insertar el registro: " << registro << endl;
+            return false;
+        }
+    }
+
+    return true;
 }
 
 // Objetivo: Eliminar un registro específico de un bloque en el disco
@@ -597,6 +666,7 @@ void control::insertaBloque(const string &pageID, bloque *bPtr, char *nombreTabl
     int bytes = _esquema.countBytes(nombreTabla);
     int maxRegistrosPorBloque = _disk.getSizeBloque() / bytes;
     int limiteRegistros = (opcion == 0) ? maxRegistrosPorBloque : opcion;
+    cout << "Cantidad de registros a insertar: " << limiteRegistros << endl;
 
     int contadorTotal = 0;
 
@@ -624,6 +694,53 @@ void control::insertaBloque(const string &pageID, bloque *bPtr, char *nombreTabl
     archivo.close();
 }
 
+void control::_insertaBloque(char *nombreTabla, string archivoCsv, int opcion)
+{
+    // Si no existe el esquema, generarlo automaticamente
+    if (!_esquema.existeTabla(nombreTabla))
+    {
+        _esquema.generarEsquema(archivoCsv, nombreTabla);
+    }
+
+    char *esquemaTabla = _esquema.extraerEsquema(nombreTabla);
+
+    ifstream archivo(archivoCsv);
+    if (!archivo.is_open())
+    {
+        cout << "No se pudo abrir el archivo CSV.\n";
+        return;
+    }
+
+    string linea;
+    getline(archivo, linea); // Omitir encabezado
+
+    int bytes = _esquema.countBytes(nombreTabla);
+    int maxRegistrosPorBloque = _disk.getSizeBloque() / bytes;
+    int limiteRegistros = (opcion == 0) ? maxRegistrosPorBloque : opcion;
+    cout << "Cantidad de registros a insertar: " << limiteRegistros << endl;
+
+    int contadorTotal = 0;
+    _bloque.vaciarBloque();
+
+    while (getline(archivo, linea) && contadorTotal < limiteRegistros)
+    {
+        string separado = _archivo.separar(linea);
+        bool esValida = _esquema.validar(esquemaTabla, separado);
+        char *lineaConvertida = _esquema.formatearLinea(separado.c_str(), esquemaTabla);
+
+        if (esValida)
+        {
+            _bloque.insertarLinea(lineaConvertida);
+            contadorTotal++;
+        }
+        else
+        {
+            cout << "Registro invalido: " << separado << endl;
+        }
+    }
+
+    archivo.close();
+}
 // Objetivo: Eliminar un registro específico de un bloque que esta en memoria
 // Input: pageID, bloque puntero, nombre de la tabla
 // Output: Registro eliminado del bloque, mostrando mensajes de exito o error
@@ -709,7 +826,76 @@ int control::eliminarBloque(const std::string &pageID, bloque *bPtr, char *nombr
     return indice;
 }
 
-void control::consultaWherePage(char *nombreTabla,const char *rutaWhere,char *campo,char *operador,char *valor)
+int control::_eliminarBloque(const std::string &claveEliminar, bloque *bPtr, char *nombreTabla)
+{
+    int bytes = _esquema.countBytes(nombreTabla);
+    if (bytes <= 0)
+    {
+        cerr << "Error: tamaño de registro invalido (" << bytes << " bytes).\n";
+        return -1;
+    }
+
+    string rutaBloque = "../../metaData/bloque" + claveEliminar + ".txt";
+    if (!bPtr)
+    {
+        _bloque.crearBloque(rutaBloque.c_str());
+        bPtr = &_bloque;
+    }
+
+    const char *contenido = bPtr->obtenerBloque();
+    if (!contenido || strlen(contenido) == 0)
+    {
+        cerr << "Error: el contenido del bloque esta vacío o es nulo.\n";
+        return -1;
+    }
+
+    std::regex regex_metadato("^\\d{6}#\\d{6}#\\d{6}$");
+    stringstream ss(contenido);
+    string registro;
+    vector<string> registros;
+    bool eliminado = false;
+
+    while (getline(ss, registro, '|'))
+    {
+        if (!registro.empty() && !regex_match(registro, regex_metadato))
+        {
+            size_t pos = registro.find('#');
+            if (pos != string::npos)
+            {
+                string campo1 = registro.substr(0, pos);
+
+                // ✂️ Limpiar espacios al inicio y fin del campo
+                campo1.erase(0, campo1.find_first_not_of(" \t"));
+                campo1.erase(campo1.find_last_not_of(" \t") + 1);
+
+                if (campo1 == claveEliminar && !eliminado)
+                {
+                    registros.push_back(string(bytes, '#')); // marcar como eliminado
+                    eliminado = true;
+                    continue;
+                }
+            }
+            registros.push_back(registro);
+        }
+    }
+
+    if (!eliminado)
+    {
+        cerr << "No se encontro ningun registro con clave: " << claveEliminar << "\n";
+        return 0;
+    }
+
+    bPtr->vaciarBloque();
+    for (const auto &reg : registros)
+    {
+        bPtr->insertarLinea(reg.c_str());
+    }
+
+    cout << "Registro eliminado correctamente.\n";
+    return 1;
+}
+
+void control::consultaWherePage(char *nombreTabla, const char *rutaWhere, char *campo, char *operador, char *valor)
 {
     char *esquemaTabla = _esquema.extraerEsquema(nombreTabla);
 
@@ -988,7 +1174,6 @@ void control::simularBufferLRU()
     } while (opcion != 5);
 }
 
-
 void control::simularBufferClock()
 {
     bloques.clear();
@@ -1212,6 +1397,346 @@ void control::simularBufferClock()
     } while (opcion != 5);
 }
 
+// Interfazz
+
+bool control::accederInsertar(char *nombreTabla, string archivoCsv, int cantidad)
+{
+
+    std::string pageID;
+    string rutaBloque = _headFile.asignarBloque(nombreTabla);
+
+    int numBloque = extraerNumeroBloque(rutaBloque);
+    pageID = std::to_string(numBloque);
+
+    int frameID = _lru.indexPageID(pageID);
+    int pinValor = (frameID != -1) ? _lru.getPinCount(frameID) : 0;
+
+    bool esMiss = _lru.accessPage(pageID, 'W', pinValor);
+    frameID = _lru.indexPageID(pageID);
+
+    if (esMiss)
+    {
+        bloques.resize(_lru.sizeFrame());
+        cout << "rutaBloque: " << rutaBloque << endl;
+        cout << "frameID: " << frameID << endl;
+        bloques[frameID].crearBloque(rutaBloque.c_str());
+    }
+
+    char guardar;
+    std::cout << "¿Guardar cambios en disco? (s/n): ";
+    std::cin >> guardar;
+
+    if (tolower(guardar) == 's')
+    {
+        bool insertion = _insert(pageID, nombreTabla, archivoCsv, cantidad);
+        bloques[frameID].vaciarBloque();
+        bloques[frameID].crearBloque(rutaBloque.c_str());
+        int key = _archivo.extraerKey(rutaBloque.c_str());
+        if (!_bPlusTree.buscar(key))
+        {
+
+            _bPlusTree.insertar(key); // Generando el arbol B+
+        }
+        std::cout << "Cambios guardados en disco.\n";
+        return insertion;
+    }
+    else
+    {
+        bloques[frameID] = _bloque;
+        _bloque.vaciarBloque();
+        std::cout << "Cambios descartados.\n";
+    }
+    return true;
+}
+
+int control::extraerNumeroBloque(const std::string &ruta)
+{
+    size_t inicio = ruta.find("bloque");
+    if (inicio == std::string::npos)
+        return -1; // No se encontró "bloque"
+
+    inicio += 6; // saltar la palabra "bloque"
+    size_t fin = ruta.find(".txt", inicio);
+
+    if (fin == std::string::npos)
+        return -1;
+
+    std::string numero = ruta.substr(inicio, fin - inicio);
+    return std::stoi(numero); // puede lanzar excepción si no es un número
+}
+void control::generarBPlusTree()
+{
+    string archivo = "../../metaData/blosquesAsignados.txt";
+    vector<string> rutas = _archivo.extraerRutas(archivo);
+    if (rutas.empty())
+    {
+        cout << "No hay bloques asignados para construir el arbol B+.\n";
+        return;
+    }
+    for (const string &ruta : rutas)
+    {
+        int key = _archivo.extraerKey(ruta.c_str());
+        if (!_bPlusTree.buscar(key))
+        {
+            _bPlusTree.insertar(key);
+        }
+    }
+}
+
+vector<string> control::extraerCampoPorIndice(const string &rutaTxt, int indiceCampo)
+{
+    vector<string> camposExtraidos;
+    ifstream archivoRutas(rutaTxt);
+    string linea;
+
+    if (!archivoRutas.is_open())
+    {
+        cerr << "No se pudo abrir el archivo de rutas: " << rutaTxt << endl;
+        return camposExtraidos;
+    }
+
+    while (getline(archivoRutas, linea))
+    {
+        size_t pos = linea.find('#');
+        if (pos == string::npos)
+            continue;
+
+        string rutaArchivo = linea.substr(pos + 1);
+        ifstream archivoDatos(rutaArchivo);
+        if (!archivoDatos.is_open())
+        {
+            cerr << "No se pudo abrir el archivo de datos: " << rutaArchivo << endl;
+            continue;
+        }
+
+        string lineaDato;
+        getline(archivoDatos, lineaDato); // Omitir encabezado
+        while (getline(archivoDatos, lineaDato))
+        {
+            stringstream ss(lineaDato);
+            string campo;
+            int contador = 1;
+
+            while (getline(ss, campo, '#'))
+            {
+                if (contador == indiceCampo)
+                {
+                    camposExtraidos.push_back(campo);
+                    break;
+                }
+                contador++;
+            }
+        }
+
+        archivoDatos.close();
+    }
+
+    archivoRutas.close();
+    return camposExtraidos;
+}
+
+void control::generarHash(char *nombreTabla)
+{
+    string archivo = "../../metaData/blosquesAsignados.txt";
+    vector<string> rutas = _archivo.extraerRutas(archivo);
+    if (rutas.empty())
+    {
+        cout << "No hay bloques asignados para contruri hash Extendido\n";
+        return;
+    }
+
+    // vector<string> campos = _archivo.obtenerCamposDeTabla(nombreTabla, "../../esquema/esquema.txt");
+    // cout << "Campos de la tabla: "<<campos[0] << endl;
+    for (const string &ruta : rutas)
+    {
+        int key = extraerNumeroBloque(ruta);
+
+        vector<string> valor = extraerCampoPorIndice(ruta, 1); // Asumiendo que el campo de interés es el segundo (índice 1)
+        for (const string &v : valor)
+        {
+            int valores = std::stoi(v);
+            if (_hashExtendido.buscar(valores) == -1)
+            {
+                cout << "El valor " << v << " ya existe en el hash extendido.\n";
+                _hashExtendido.insertar(valores, key);
+            }
+        }
+    }
+}
+
+void control::interfaz()
+{
+    bloques.clear();
+    bloques.resize(_lru.sizeFrame());
+    int opcion;
+    _lru.printFrames();
+    _lru.printRendimiendo();
+
+    generarBPlusTree();
+    _bPlusTree.generarImagen();
+
+    do
+    {
+        std::cout << "\n--- MENU PRENCIPAL ---\n";
+        std::cout << "1. Insertar registros\n";
+        std::cout << "2. Eliminar registro\n";
+        std::cout << "3. Consulta where\n";
+        std::cout << "4. Mostrar toda la tabla\n";
+        std::cout << "5. Despinear pagina\n";
+        std::cout << "6. Fijar (pin) una pagina\n";
+        std::cout << "7. Salir\n";
+        std::cout << "Seleccione una opcion: ";
+        std::cin >> opcion;
+
+        switch (opcion)
+        {
+        case 1:
+        {
+            if (_lru.allPinned())
+            {
+                std::cout << "Todas las paginas estan PINNEADAS. Solo puedes DESPINEAR.\n";
+                break;
+            }
+            char nombreTabla[50];
+            std::cout << "Ingrese el nombre de la tabla: ";
+            std::cin >> nombreTabla;
+            std::string archivoCsv;
+            int cantidad;
+            std::cout << "Ingrese el nombre del archivo CSV: ";
+            std::cin >> archivoCsv;
+            archivoCsv = "../../archivos/" + archivoCsv + ".csv";
+            std::cout << "0) Insertar todos los registros\nn) Insertar n registros\n";
+            std::cin >> cantidad;
+            _insertaBloque(nombreTabla, archivoCsv, cantidad);
+            _bloque.mostrarBloque();
+            bool insertComplete = false;
+            while (insertComplete == false)
+            {
+                insertComplete = accederInsertar(nombreTabla, archivoCsv, cantidad);
+            }
+
+            _lru.printFrames();
+            _lru.printRendimiendo();
+            _bPlusTree.generarImagen();
+            break;
+        }
+        case 2:
+        {
+            if (_lru.allPinned())
+            {
+                std::cout << "Todas las paginas estan PINNEADAS. Solo puedes DESPINEAR.\n";
+                break;
+            }
+            char nombreTabla[50];
+            std::cout << "Ingrese el nombre de la tabla: ";
+            std::cin >> nombreTabla;
+            generarHash(nombreTabla);
+            _hashExtendido.mostrar();
+
+            int eliminar;
+            std::cout << "Ingrese el ID de la pagina a eliminar: ";
+            std::cin >> eliminar;
+
+            int pageID = _hashExtendido.buscar(eliminar);
+            cout << "ID de pagina a eliminar: " << pageID << endl;
+
+            int frameID = _lru.indexPageID(to_string(pageID));
+            int pinValor = 0;
+
+            bool esMiss = _lru.accessPage(to_string(pageID), 'W', pinValor);
+            frameID = _lru.indexPageID(to_string(pageID)); // Puede cambiar si fue un miss
+            std::string rutaBloque = "../../metaData/bloque" + to_string(pageID) + ".txt";
+            if (esMiss)
+            {
+                bloques.resize(_lru.sizeFrame());
+                bloques[frameID].crearBloque(rutaBloque.c_str());
+            }
+            /////////////////////////////////////////////
+            int indiceEliminar = _eliminarBloque(to_string(eliminar), &bloques[frameID], nombreTabla);
+            bloques[frameID].mostrarBloque();
+
+            char guardar;
+            std::cout << "¿Guardar cambios en disco? (s/n): ";
+            std::cin >> guardar;
+
+            if (tolower(guardar) == 's')
+            {
+                if (_bPlusTree.buscar(eliminar) != -1)
+                {
+                    _bPlusTree.eliminar(eliminar);
+                    int key = _archivo.extraerKey(rutaBloque.c_str());
+                    _bPlusTree.insertar(key); // Generando el arbol B+
+                }
+                eliminarDisco(to_string(pageID), nombreTabla, indiceEliminar);
+                bloques[frameID].vaciarBloque();
+                bloques[frameID].crearBloque(rutaBloque.c_str());
+            }
+            else
+            {
+                bloques[frameID] = _bloque;
+                _bloque.vaciarBloque();
+                std::cout << "Cambios descartados.\n";
+            }
+
+            _lru.printFrames();
+            _lru.printRendimiendo();
+            break;
+        }
+        case 3:
+        {
+            if (_lru.allPinned())
+            {
+                std::cout << "Todas las paginas estan PINNEADAS. Solo puedes DESPINEAR.\n";
+                break;
+            }
+            char nombreTabla[50], campo[50], operador[5], valor[50], nombreRelacion[50];
+            cout << "Ingrese el nombre de la tabla: ";
+            cin >> nombreTabla;
+            cout << "Campo a buscar: ";
+            cin >> campo;
+            cout << "Operador de comparacion (=, !=, <, >, etc.): ";
+            cin >> operador;
+            cout << "Valor a comparar: ";
+            cin >> valor;
+            
+
+            _lru.printFrames();
+            _lru.printRendimiendo();
+            break;
+        }
+        case 5:
+        {
+            string pageID;
+            std::cout << "ID de la pagina a despinear: ";
+            std::cin >> pageID;
+            _lru.despinear(pageID);
+            _lru.printFrames();
+            _lru.printRendimiendo();
+            break;
+        }
+        case 6:
+        {
+            string pageID;
+            std::cout << "Ingrese el ID de la pagina que desea fijar (pin): ";
+            std::cin >> pageID;
+
+            if (_lru.indexPageID(pageID) == -1)
+            {
+                std::cout << "La pagina " << pageID << " no esta actualmente en memoria.\n";
+            }
+            else
+            {
+                _lru.pinear(pageID);
+                std::cout << "Pagina " << pageID << " fijada correctamente.\n";
+            }
+
+            _lru.printFrames();
+            _lru.printRendimiendo();
+            break;
+        }
+        }
+    } while (opcion != 10);
+}
 // Objetivo: Mostrar menu principal al usuario
 // Input: Ninguno
 // Output: Interaccion por consola
@@ -1235,6 +1760,7 @@ void control::menu()
         cout << "    10. Eliminar registro" << endl;
         cout << "    11. Buffer (LRU)" << endl;
         cout << "    12. Buffer (Clock)" << endl;
+        cout << "    13. Interfaz" << endl;
         cout << "    0. Salir" << endl;
         cout << "Seleccione una opcion: ";
         cin >> opcion;
@@ -1338,6 +1864,11 @@ void control::menu()
         case 12:
         {
             simularBufferClock();
+            break;
+        }
+        case 13:
+        {
+            interfaz();
             break;
         }
 

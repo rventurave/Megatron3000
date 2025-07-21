@@ -20,11 +20,11 @@ bloque::bloque() {
 void bloque::agregarAlBloque(const char* contenido) {
     int lenActual = strlen(bloqueB);
     int lenNuevo = strlen(contenido);
-    if (lenActual + lenNuevo + 2 < 5000) {
+    if (lenActual + lenNuevo + 2 < 50000) {
         strcat(bloqueB, contenido);
         strcat(bloqueB, "|");
     } else {
-        cout << "Bloque lleno, no se puede agregar más contenido.\n";
+        cout << "Bloque lleno, no se puede agregar mas contenido.\n";
     }
 }
 
@@ -119,4 +119,17 @@ bool bloque::insertarLinea(const char* linea) {
 // Autor: Ronald Ventura
 void bloque::vaciarBloque() {
     memset(bloqueB, 0, sizeof(bloqueB));
+}
+void bloque::eliminarPrimeraLinea() {
+    char* separador = strchr(bloqueB, '|');
+    if (separador) {
+        separador++; // Avanza después de '|'
+        // Calcula cuántos caracteres quedan después de la primera línea
+        size_t longitudRestante = strlen(separador);
+        // Mueve la parte restante al inicio del buffer
+        memmove(bloqueB, separador, longitudRestante + 1); // +1 para incluir '\0'
+    } else {
+        // No hay separador, por lo tanto no hay líneas que eliminar
+        vaciarBloque(); // Por seguridad, vacía el bloque si es inválido
+    }
 }

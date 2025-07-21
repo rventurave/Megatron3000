@@ -3,7 +3,7 @@
 
 class bloque {
 private:
-    char bloqueB[5000];
+    char bloqueB[50000];
     void agregarAlBloque(const char* contenido);
     void procesarArchivoRegistro(const char* ruta);
 
@@ -14,6 +14,7 @@ public:
     const char* obtenerBloque();
     bool insertarLinea(const char* linea);
     void vaciarBloque();
+    void eliminarPrimeraLinea();
 
 };
 

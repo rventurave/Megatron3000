@@ -12,8 +12,11 @@ int main()
     std::cout << "Ingrese el orden del arbol B+: ";
     int ordenArbol;
     std::cin >> ordenArbol;
+    std::cout << "Ingrese la capacidad del bucket: ";
+    int capacidadBucket;
+    std::cin >> capacidadBucket;
 
-    control _control(tamBuffer, ordenArbol);
+    control _control(tamBuffer, ordenArbol, capacidadBucket);
     _control.menu();
     cout << "% " << endl;
     return 0;
